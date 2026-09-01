@@ -7,7 +7,7 @@ extends Control
 
 const COLS = 10
 const ROWS = 20
-const CELL_SIZE = 32
+var CELL_SIZE = 32.0
 
 
 # ============================================================
@@ -144,6 +144,9 @@ var piece_colors = [
 func _ready():
 
 	randomize()
+	
+	resize_game()
+	get_viewport().size_changed.connect(resize_game)
 
 	# --------------------------------------------------------
 	# Pixel font for HUD labels
@@ -184,6 +187,29 @@ func _ready():
 
 	queue_redraw()
 
+# ============================================================
+# RESPONSIVE GAME SIZE
+# ============================================================
+
+func resize_game():
+
+	var viewport_size = get_viewport_rect().size
+
+	# Space available for the 10 x 20 board
+	var available_width = viewport_size.x * 0.42
+	var available_height = viewport_size.y * 0.62
+
+	# Calculate a cell size that keeps the board proportional
+	var width_cell_size = available_width / COLS
+	var height_cell_size = available_height / ROWS
+
+	CELL_SIZE = min(
+		width_cell_size,
+		height_cell_size
+	)
+
+	# Keep the game from becoming ridiculously tiny
+	CELL_SIZE = max(CELL_SIZE, 20.0)
 
 # ============================================================
 # GAME LOOP
@@ -211,9 +237,37 @@ func _process(delta):
 
 func _input(event):
 
-	if game_over:
-		return
+	# --------------------------------------------------------
+	# GAME OVER INPUT
+	# --------------------------------------------------------
 
+	if game_over:
+
+		if event is InputEventKey and event.pressed:
+
+			if event.keycode == KEY_R:
+
+				get_tree().reload_current_scene()
+
+			elif event.keycode == KEY_ESCAPE:
+
+				get_tree().change_scene_to_file("res://Arcade.tscn")
+
+
+		elif event is InputEventMouseButton:
+
+			if event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+
+				handle_game_over_click(event.position)
+
+
+		elif event is InputEventScreenTouch:
+
+			if not event.pressed:
+
+				handle_game_over_click(event.position)
+
+		return
 	# --------------------------------------------------------
 	# KEYBOARD
 	# --------------------------------------------------------
@@ -886,45 +940,256 @@ func _draw():
 				piece_colors[next_piece_index]
 			)
 
-
 	# --------------------------------------------------------
-	# GAME OVER
+	# GAME OVER SCREEN
 	# --------------------------------------------------------
 
 	if game_over:
 
-		var game_over_font = pixel_font
+		var center_x = size.x / 2.0
+		var center_y = size.y / 2.0
+
+		var panel_width = min(500.0, size.x - 40.0)
+		var panel_height = 330.0
+
+		var panel_x = center_x - panel_width / 2.0
+		var panel_y = center_y - panel_height / 2.0
 
 
-		# Dark game-over box
+		# ----------------------------------------------------
+		# Dark overlay
+		# ----------------------------------------------------
 
 		draw_rect(
 			Rect2(
-				start_x + 10,
-				start_y + board_height / 2 - 45,
-				board_width - 20,
-				90
+				0,
+				0,
+				size.x,
+				size.y
 			),
-			Color("#111111")
+			Color(0, 0, 0, 0.65)
 		)
 
 
-		# GAME OVER text
+		# ----------------------------------------------------
+		# Game over panel
+		# ----------------------------------------------------
+
+		draw_rect(
+			Rect2(
+				panel_x,
+				panel_y,
+				panel_width,
+				panel_height
+			),
+			Color("#181818")
+		)
+
+		draw_rect(
+			Rect2(
+				panel_x,
+				panel_y,
+				panel_width,
+				panel_height
+			),
+			Color("#00FFFF"),
+			false,
+			4.0
+		)
+
+	# --------------------------------------------------------
+	# GAME OVER SCREEN
+	# --------------------------------------------------------
+
+	if game_over:
+
+		var center_x = size.x / 2.0
+		var center_y = size.y / 2.0
+
+		var panel_width = min(500.0, size.x - 40.0)
+		var panel_height = 330.0
+
+		var panel_x = center_x - panel_width / 2.0
+		var panel_y = center_y - panel_height / 2.0
+
+
+		# ----------------------------------------------------
+		# DARK OVERLAY
+		# ----------------------------------------------------
+
+		draw_rect(
+			Rect2(
+				0,
+				0,
+				size.x,
+				size.y
+			),
+			Color(0, 0, 0, 0.65)
+		)
+
+
+		# ----------------------------------------------------
+		# GAME OVER PANEL
+		# ----------------------------------------------------
+
+		draw_rect(
+			Rect2(
+				panel_x,
+				panel_y,
+				panel_width,
+				panel_height
+			),
+			Color("#181818")
+		)
+
+		draw_rect(
+			Rect2(
+				panel_x,
+				panel_y,
+				panel_width,
+				panel_height
+			),
+			Color("#00FFFF"),
+			false,
+			4.0
+		)
+
+
+		# ----------------------------------------------------
+		# GAME OVER TITLE
+		# ----------------------------------------------------
 
 		draw_string(
-			game_over_font,
+			pixel_font,
 			Vector2(
-				start_x + 55,
-				start_y + board_height / 2 + 10
+				panel_x,
+				panel_y + 60
 			),
 			"GAME OVER",
-			HORIZONTAL_ALIGNMENT_LEFT,
-			-1,
+			HORIZONTAL_ALIGNMENT_CENTER,
+			panel_width,
 			28,
 			Color("#FFFFFF")
 		)
 
 
+		# ----------------------------------------------------
+		# FINAL SCORE
+		# ----------------------------------------------------
+
+		draw_string(
+			pixel_font,
+			Vector2(
+				panel_x,
+				panel_y + 100
+			),
+			"FINAL SCORE: " + str(score),
+			HORIZONTAL_ALIGNMENT_CENTER,
+			panel_width,
+			16,
+			Color("#00FFFF")
+		)
+
+
+		# ----------------------------------------------------
+		# BUTTON SETTINGS
+		# ----------------------------------------------------
+
+		var button_width = min(
+			300.0,
+			panel_width - 40.0
+		)
+
+		var button_height = 55.0
+
+		var button_x = (
+			center_x - button_width / 2.0
+		)
+
+
+		# ----------------------------------------------------
+		# PLAY AGAIN BUTTON
+		# ----------------------------------------------------
+
+		var play_y = panel_y + 135
+
+		draw_rect(
+			Rect2(
+				button_x,
+				play_y,
+				button_width,
+				button_height
+			),
+			Color("#222222")
+		)
+
+		draw_rect(
+			Rect2(
+				button_x,
+				play_y,
+				button_width,
+				button_height
+			),
+			Color("#00FFFF"),
+			false,
+			3.0
+		)
+
+		draw_string(
+			pixel_font,
+			Vector2(
+				button_x,
+				play_y + 35
+			),
+			"PLAY AGAIN",
+			HORIZONTAL_ALIGNMENT_CENTER,
+			button_width,
+			18,
+			Color("#FFFFFF")
+		)
+
+
+		# ----------------------------------------------------
+		# BACK TO ARCADE BUTTON
+		# ----------------------------------------------------
+
+		var arcade_y = panel_y + 205
+
+		draw_rect(
+			Rect2(
+				button_x,
+				arcade_y,
+				button_width,
+				button_height
+			),
+			Color("#222222")
+		)
+
+		draw_rect(
+			Rect2(
+				button_x,
+				arcade_y,
+				button_width,
+				button_height
+			),
+			Color("#00FFFF"),
+			false,
+			3.0
+		)
+
+		draw_string(
+			pixel_font,
+			Vector2(
+				button_x,
+				arcade_y + 35
+			),
+			"BACK TO ARCADE",
+			HORIZONTAL_ALIGNMENT_CENTER,
+			button_width,
+			16,
+			Color("#FFFFFF")
+		)
+		
 # ============================================================
 # DRAW ONE BLOCK
 # ============================================================
@@ -974,3 +1239,44 @@ func draw_block(x, y, block_color):
 		),
 		block_color.darkened(0.35)
 	)
+
+# ============================================================
+# GAME OVER BUTTONS
+# ============================================================
+
+func handle_game_over_click(click_position):
+
+	var center_x = size.x / 2.0
+	var center_y = size.y / 2.0
+
+	var panel_height = 330.0
+	var panel_y = center_y - panel_height / 2.0
+
+	var panel_width = min(500.0, size.x - 40.0)
+
+	var button_width = min(300.0, panel_width - 40.0)
+	var button_height = 55.0
+
+	var button_x = center_x - button_width / 2.0
+
+	var play_again_rect = Rect2(
+		button_x,
+		panel_y + 135,
+		button_width,
+		button_height
+	)
+
+	var arcade_rect = Rect2(
+		button_x,
+		panel_y + 205,
+		button_width,
+		button_height
+	)
+
+	if play_again_rect.has_point(click_position):
+
+		get_tree().reload_current_scene()
+
+	elif arcade_rect.has_point(click_position):
+
+		get_tree().change_scene_to_file("res://Arcade.tscn")
