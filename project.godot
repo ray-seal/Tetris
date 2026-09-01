@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Shitty Retro Arcade"
-run/main_scene="uid://qbqkwr108bh8"
+run/main_scene="uid://u85oohwq0ivd"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -29,3 +29,4 @@ window/stretch/aspect="expand"
 rendering_device/driver.windows="d3d12"
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_s3tc_bptc=true

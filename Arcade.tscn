@@ -1,0 +1,253 @@
+[gd_scene format=3 uid="uid://u85oohwq0ivd"]
+
+[ext_resource type="Script" uid="uid://c656cw212n8y" path="res://Arcade.gd" id="1_hvwyj"]
+[ext_resource type="FontFile" uid="uid://1d3wdqb3lvq4" path="res://PressStart2P-Regular.ttf" id="1_pk7nq"]
+[ext_resource type="Texture2D" uid="uid://cdp24gpplcbmf" path="res://Assets/Arcade.png" id="2_ilclh"]
+
+[sub_resource type="Animation" id="Animation_ilclh"]
+resource_name = "CRT_Zoom"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cabinet/Screen/CRTWindow/GameUI:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(5, 5)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cabinet/Screen/CRTWindow/GameUI:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.3, 0.33, 0.36, 0.39, 0.42, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cabinet/CabinetArt:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.45),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cabinet/Title:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.45),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_t6jwj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Cabinet/Screen/CRTWindow/GameUI:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Cabinet/Screen/CRTWindow/GameUI:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Cabinet/CabinetArt:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Cabinet/Title:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8j8rp"]
+_data = {
+&"CRT_Zoom": SubResource("Animation_ilclh"),
+&"RESET": SubResource("Animation_t6jwj")
+}
+
+[node name="Arcade" type="Control" unique_id=1335284135]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_hvwyj")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1492347425]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -13.0
+offset_right = 10.0
+offset_bottom = 19.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.06666667, 0.06666667, 0.06666667, 1)
+
+[node name="Cabinet" type="ColorRect" parent="." unique_id=1792559083]
+layout_mode = 0
+offset_left = 327.0
+offset_top = -47.0
+offset_right = 927.0
+offset_bottom = 853.0
+color = Color(0.19607843, 0.19607843, 0.19607843, 0)
+
+[node name="CabinetArt" type="TextureRect" parent="Cabinet" unique_id=1062600691]
+layout_mode = 0
+offset_left = -8.0
+offset_top = 50.000008
+offset_right = 1016.0
+offset_bottom = 1586.0
+scale = Vector2(0.42, 0.42)
+texture = ExtResource("2_ilclh")
+
+[node name="Screen" type="ColorRect" parent="Cabinet" unique_id=314678719]
+layout_mode = 0
+offset_left = 131.0
+offset_top = 352.0
+offset_right = 294.0
+offset_bottom = 494.0
+color = Color(0.03137255, 0.03137255, 0.03137255, 0)
+
+[node name="CRTWindow" type="Control" parent="Cabinet/Screen" unique_id=978969993]
+anchors_preset = 0
+offset_left = -10.0
+offset_top = -150.0
+offset_right = 165.0
+offset_bottom = -15.0
+
+[node name="GameUI" type="Control" parent="Cabinet/Screen/CRTWindow" unique_id=528405931]
+anchors_preset = 0
+offset_right = 181.0
+offset_bottom = 136.0
+pivot_offset = Vector2(90.5, 68)
+
+[node name="GameSelectTitle" type="Label" parent="Cabinet/Screen/CRTWindow/GameUI" unique_id=634861881]
+layout_mode = 0
+offset_left = 15.0
+offset_right = 177.0
+offset_bottom = 14.0
+theme_override_fonts/font = ExtResource("1_pk7nq")
+theme_override_font_sizes/font_size = 14
+text = "GAME SELECT"
+
+[node name="GameList" type="ScrollContainer" parent="Cabinet/Screen/CRTWindow/GameUI" unique_id=1149232831]
+layout_mode = 0
+offset_top = 20.0
+offset_right = 180.0
+offset_bottom = 120.0
+
+[node name="Games" type="VBoxContainer" parent="Cabinet/Screen/CRTWindow/GameUI/GameList" unique_id=1199094607]
+layout_mode = 2
+alignment = 1
+
+[node name="BlockDropButton" type="Button" parent="Cabinet/Screen/CRTWindow/GameUI/GameList/Games" unique_id=399982749]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_pk7nq")
+theme_override_font_sizes/font_size = 14
+text = "> BLOCK DROP"
+flat = true
+
+[node name="ComingSoon" type="Button" parent="Cabinet/Screen/CRTWindow/GameUI/GameList/Games" unique_id=2020974980]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_pk7nq")
+theme_override_font_sizes/font_size = 14
+text = "COMING SOON!"
+flat = true
+
+[node name="ComingSoon2" type="Button" parent="Cabinet/Screen/CRTWindow/GameUI/GameList/Games" unique_id=630562775]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("1_pk7nq")
+theme_override_font_sizes/font_size = 14
+text = "COMING SOON!"
+flat = true
+
+[node name="HighScore" type="Label" parent="Cabinet/Screen/CRTWindow/GameUI" unique_id=376535053]
+layout_mode = 0
+offset_left = 15.0
+offset_top = 120.0
+offset_right = 166.0
+offset_bottom = 134.0
+theme_override_fonts/font = ExtResource("1_pk7nq")
+theme_override_font_sizes/font_size = 8
+text = "HIGH SCORE: 000000"
+
+[node name="TransitionOverlay" type="ColorRect" parent="Cabinet/Screen" unique_id=1420123469]
+layout_mode = 0
+offset_left = -7.0
+offset_top = -162.0
+offset_right = 163.0
+offset_bottom = -17.0
+mouse_filter = 2
+color = Color(0, 0, 0, 0)
+
+[node name="Title" type="Label" parent="Cabinet" unique_id=1829287034]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 75.0
+offset_top = 69.0
+offset_right = -263.0
+offset_bottom = -768.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_fonts/font = ExtResource("1_pk7nq")
+theme_override_font_sizes/font_size = 20
+text = "8-BIT GARBAGE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1564467009]
+libraries/ = SubResource("AnimationLibrary_8j8rp")
+
+[connection signal="pressed" from="Cabinet/Screen/CRTWindow/GameUI/GameList/Games/BlockDropButton" to="." method="_on_block_drop_button_pressed"]

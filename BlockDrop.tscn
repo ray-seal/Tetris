@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://qbqkwr108bh8"]
+
+[ext_resource type="Script" uid="uid://5u4d07yr817c" path="res://BlockDrop.gd" id="1_gx20q"]
+[ext_resource type="FontFile" uid="uid://1d3wdqb3lvq4" path="res://PressStart2P-Regular.ttf" id="2_pc57j"]
+
+[node name="BlockDrop" type="Control" unique_id=1637856878]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_gx20q")
+
+[node name="HUD" type="Control" parent="." unique_id=832652234]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="HUD" unique_id=327581337]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 420.0
+offset_bottom = 70.0
+theme_override_colors/font_color = Color(0, 1, 0.4, 1)
+theme_override_fonts/font = ExtResource("2_pc57j")
+theme_override_font_sizes/font_size = 16
+text = "8-BIT GARBAGE"
+
+[node name="ScoreLabel" type="Label" parent="HUD" unique_id=1320278121]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 80.0
+offset_right = 220.0
+offset_bottom = 120.0
+theme_override_fonts/font = ExtResource("2_pc57j")
+theme_override_font_sizes/font_size = 14
+text = "SCORE: 0"
+
+[node name="LevelLabel" type="Label" parent="HUD" unique_id=283045405]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 120.0
+offset_right = 83.0
+offset_bottom = 143.0
+theme_override_fonts/font = ExtResource("2_pc57j")
+theme_override_font_sizes/font_size = 14
+text = "LEVEL: 1"
+
+[node name="LinesLabel" type="Label" parent="HUD" unique_id=401600974]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 160.0
+offset_right = 82.0
+offset_bottom = 183.0
+theme_override_fonts/font = ExtResource("2_pc57j")
+theme_override_font_sizes/font_size = 14
+text = "LINES: 0"
+
+[node name="GameTitle" type="Label" parent="HUD" unique_id=1062847816]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 55.0
+offset_right = 171.0
+offset_bottom = 89.0
+theme_override_colors/font_color = Color(0, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_pc57j")
+theme_override_font_sizes/font_size = 22
+text = "BLOCK DROP"
