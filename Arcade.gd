@@ -1,5 +1,6 @@
 extends Control
 
+
 func _on_block_drop_button_pressed():
 	var animation_player = $AnimationPlayer
 	
@@ -7,12 +8,13 @@ func _on_block_drop_button_pressed():
 		print("CRT_Zoom DOES NOT EXIST")
 		print(animation_player.get_animation_list())
 		return
-			
+	
 	animation_player.play("CRT_Zoom")
 	
 	await animation_player.animation_finished
 	
 	get_tree().change_scene_to_file("res://BlockDrop.tscn")
+
 
 func _ready():
 	resize_arcade()
@@ -22,21 +24,30 @@ func _ready():
 func resize_arcade():
 	var viewport_size = get_viewport_rect().size
 	
-	var cabinet = $Cabinet
-	var cabinet_size = Vector2(600, 900)
+	# Actual visible CabinetArt size
+	var art_size = Vector2(1024, 1536)
+	var art_scale = 0.42
 	
-	# Scale the cabinet to fit the screen while keeping its proportions
+	var visible_size = art_size * art_scale
+	
+	# Fit the actual artwork to the available screen
 	var scale_factor = min(
-		viewport_size.x / cabinet_size.x,
-		viewport_size.y / cabinet_size.y
+		viewport_size.x / visible_size.x,
+		viewport_size.y / visible_size.y
 	)
 	
+	# Leave a small border around the machine
 	scale_factor *= 0.95
 	
-	cabinet.scale = Vector2(scale_factor, scale_factor)
+	# Scale the whole Cabinet
+	$Cabinet.scale = Vector2(scale_factor, scale_factor)
 	
-	# Centre the cabinet
-	cabinet.position = Vector2(
-		(viewport_size.x - cabinet_size.x * scale_factor) / 2.0,
-		(viewport_size.y - cabinet_size.y * scale_factor) / 2.0
+	# Centre the visible CabinetArt
+	var cabinet_art = $Cabinet/CabinetArt
+	
+	$Cabinet.position = Vector2(
+		(viewport_size.x - visible_size.x * scale_factor) / 2.0
+		- cabinet_art.position.x * scale_factor,
+		(viewport_size.y - visible_size.y * scale_factor) / 2.0
+		- cabinet_art.position.y * scale_factor
 	)
