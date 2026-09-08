@@ -1,0 +1,69 @@
+[gd_scene format=3 uid="uid://blpe612wgltnt"]
+
+[ext_resource type="Script" uid="uid://r5vtpsxb63o1" path="res://DeliveryBoy/Chav.gd" id="1_mt826"]
+[ext_resource type="Texture2D" uid="uid://ceuo0qwg16ubp" path="res://DeliveryBoy/Assets/Chav.png" id="2_x8agl"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x8agl"]
+atlas = ExtResource("2_x8agl")
+region = Rect2(558, 228, 139, 199)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hc3lh"]
+atlas = ExtResource("2_x8agl")
+region = Rect2(8, 226, 138, 199)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f4p71"]
+atlas = ExtResource("2_x8agl")
+region = Rect2(1396, 226, 138, 199)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_526xg"]
+atlas = ExtResource("2_x8agl")
+region = Rect2(904, 452, 125, 190)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_mt826"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x8agl")
+}],
+"loop": 1,
+"name": &"ChavDown",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hc3lh")
+}],
+"loop": 1,
+"name": &"ChavLeft",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f4p71")
+}],
+"loop": 1,
+"name": &"ChavRight",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_526xg")
+}],
+"loop": 1,
+"name": &"ChavUp",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g7b7a"]
+
+[node name="Chav" type="Node2D" unique_id=2027611054]
+script = ExtResource("1_mt826")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=61723165]
+sprite_frames = SubResource("SpriteFrames_mt826")
+animation = &"ChavLeft"
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1991222666]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=373003914]
+shape = SubResource("RectangleShape2D_g7b7a")

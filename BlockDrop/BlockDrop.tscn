@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://5u4d07yr817c" path="res://BlockDrop.gd" id="1_gx20q"]
 [ext_resource type="FontFile" uid="uid://1d3wdqb3lvq4" path="res://PressStart2P-Regular.ttf" id="2_pc57j"]
+[ext_resource type="AudioStream" uid="uid://ctg80gkh86xp4" path="res://Assets/Sounds/BlockDrop_Loop.ogg" id="3_pc57j"]
 
 [node name="BlockDrop" type="Control" unique_id=1637856878]
 layout_mode = 3
@@ -71,3 +72,7 @@ theme_override_colors/font_color = Color(0, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_pc57j")
 theme_override_font_sizes/font_size = 22
 text = "BLOCK DROP"
+
+[node name="BlockDropLoop" type="AudioStreamPlayer2D" parent="." unique_id=334262728]
+position = Vector2(446, 384)
+stream = ExtResource("3_pc57j")

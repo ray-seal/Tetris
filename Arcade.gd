@@ -13,7 +13,7 @@ func _on_block_drop_button_pressed():
 	
 	await animation_player.animation_finished
 	
-	get_tree().change_scene_to_file("res://BlockDrop.tscn")
+	get_tree().change_scene_to_file("res://BlockDrop/BlockDrop.tscn")
 
 
 func _ready():
@@ -51,3 +51,19 @@ func resize_arcade():
 		(viewport_size.y - visible_size.y * scale_factor) / 2.0
 		- cabinet_art.position.y * scale_factor
 	)
+
+
+func _on_delivery_boy_button_pressed() -> void:
+	var animation_player = $AnimationPlayer
+	
+	if not animation_player.has_animation("CRT_Zoom"):
+		print("CRT_Zoom DOES NOT EXIST")
+		print(animation_player.get_animation_list())
+		return
+	
+	animation_player.play("CRT_Zoom")
+	
+	await animation_player.animation_finished
+	
+	get_tree().change_scene_to_file("res://DeliveryBoy/DeliveryBoy.tscn")
+	

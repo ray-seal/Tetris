@@ -194,14 +194,14 @@ alignment = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_pk7nq")
 theme_override_font_sizes/font_size = 14
-text = "> BLOCK DROP"
+text = "BLOCK DROP"
 flat = true
 
-[node name="ComingSoon" type="Button" parent="Cabinet/Screen/CRTWindow/GameUI/GameList/Games" unique_id=2020974980]
+[node name="DeliveryBoyButton" type="Button" parent="Cabinet/Screen/CRTWindow/GameUI/GameList/Games" unique_id=2020974980]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("1_pk7nq")
 theme_override_font_sizes/font_size = 14
-text = "COMING SOON!"
+text = "Delivery Boy"
 flat = true
 
 [node name="ComingSoon2" type="Button" parent="Cabinet/Screen/CRTWindow/GameUI/GameList/Games" unique_id=630562775]
@@ -251,3 +251,4 @@ vertical_alignment = 1
 libraries/ = SubResource("AnimationLibrary_8j8rp")
 
 [connection signal="pressed" from="Cabinet/Screen/CRTWindow/GameUI/GameList/Games/BlockDropButton" to="." method="_on_block_drop_button_pressed"]
+[connection signal="pressed" from="Cabinet/Screen/CRTWindow/GameUI/GameList/Games/DeliveryBoyButton" to="." method="_on_delivery_boy_button_pressed"]

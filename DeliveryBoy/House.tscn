@@ -1,0 +1,167 @@
+[gd_scene format=3 uid="uid://djy5bxpocpa61"]
+
+[ext_resource type="Script" uid="uid://cy3em8su0d1aj" path="res://DeliveryBoy/House.gd" id="1_wwt5c"]
+[ext_resource type="Texture2D" uid="uid://dey0sejhsbi3u" path="res://DeliveryBoy/Assets/Houses/House1.png" id="2_1acc2"]
+[ext_resource type="Texture2D" uid="uid://dpnjkcp6f25nq" path="res://DeliveryBoy/Assets/Houses/House2.png" id="3_1acc2"]
+[ext_resource type="Texture2D" uid="uid://bbvh2sudt62sc" path="res://DeliveryBoy/Assets/Houses/House3.png" id="4_olwjq"]
+[ext_resource type="Texture2D" uid="uid://6saw77krk3rm" path="res://DeliveryBoy/Assets/Houses/House4.png" id="5_74kf8"]
+[ext_resource type="Texture2D" uid="uid://byajtssfi2a4t" path="res://DeliveryBoy/Assets/Houses/House5.png" id="6_qaecf"]
+[ext_resource type="Texture2D" uid="uid://35rnabkx2m54" path="res://DeliveryBoy/Assets/Houses/House6.png" id="7_6pcg8"]
+[ext_resource type="Texture2D" uid="uid://cg62mua4wr6vn" path="res://DeliveryBoy/Assets/Houses/House7.png" id="8_cyg1o"]
+[ext_resource type="Texture2D" uid="uid://bkxcidly0nw6b" path="res://DeliveryBoy/Assets/Houses/House8.png" id="9_g58hp"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y1gf4"]
+atlas = ExtResource("2_1acc2")
+region = Rect2(0, 0, 1536, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1acc2"]
+atlas = ExtResource("3_1acc2")
+region = Rect2(0, 0, 1536, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uf5uw"]
+atlas = ExtResource("4_olwjq")
+region = Rect2(0, 0, 1536, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b2xwe"]
+atlas = ExtResource("5_74kf8")
+region = Rect2(0, 0, 1536, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_er55m"]
+atlas = ExtResource("6_qaecf")
+region = Rect2(0, 0, 1536, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3iqos"]
+atlas = ExtResource("7_6pcg8")
+region = Rect2(0, 0, 1536, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l5vph"]
+atlas = ExtResource("8_cyg1o")
+region = Rect2(0, 0, 1536, 1024)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_frcni"]
+atlas = ExtResource("9_g58hp")
+region = Rect2(0, 0, 1536, 1024)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g7b7a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y1gf4")
+}],
+"loop": 1,
+"name": &"House1",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1acc2")
+}],
+"loop": 1,
+"name": &"House2",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uf5uw")
+}],
+"loop": 1,
+"name": &"House3",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b2xwe")
+}],
+"loop": 1,
+"name": &"House4",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_er55m")
+}],
+"loop": 1,
+"name": &"House5",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3iqos")
+}],
+"loop": 1,
+"name": &"House6",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l5vph")
+}],
+"loop": 1,
+"name": &"House7",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_frcni")
+}],
+"loop": 1,
+"name": &"House8",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g7b7a"]
+size = Vector2(1516, 913)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gyc6d"]
+size = Vector2(592, 446)
+
+[node name="House" type="Node2D" unique_id=1302589291]
+script = ExtResource("1_wwt5c")
+speed = 75.0
+
+[node name="House1" type="AnimatedSprite2D" parent="." unique_id=413243584]
+sprite_frames = SubResource("SpriteFrames_g7b7a")
+animation = &"House1"
+
+[node name="House2" type="AnimatedSprite2D" parent="." unique_id=2111385622]
+sprite_frames = SubResource("SpriteFrames_g7b7a")
+animation = &"House8"
+
+[node name="House3" type="AnimatedSprite2D" parent="." unique_id=1573550084]
+sprite_frames = SubResource("SpriteFrames_g7b7a")
+animation = &"House2"
+
+[node name="House4" type="AnimatedSprite2D" parent="." unique_id=19306876]
+sprite_frames = SubResource("SpriteFrames_g7b7a")
+animation = &"House1"
+speed_scale = 0.75
+
+[node name="House5" type="AnimatedSprite2D" parent="." unique_id=948310121]
+sprite_frames = SubResource("SpriteFrames_g7b7a")
+animation = &"House2"
+
+[node name="House6" type="AnimatedSprite2D" parent="." unique_id=1161378346]
+sprite_frames = SubResource("SpriteFrames_g7b7a")
+animation = &"House2"
+
+[node name="House7" type="AnimatedSprite2D" parent="." unique_id=1001957362]
+sprite_frames = SubResource("SpriteFrames_g7b7a")
+animation = &"House2"
+
+[node name="House8" type="AnimatedSprite2D" parent="." unique_id=1775366739]
+sprite_frames = SubResource("SpriteFrames_g7b7a")
+animation = &"House8"
+
+[node name="HouseOccupied" type="Area2D" parent="." unique_id=90829175]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HouseOccupied" unique_id=366341724]
+position = Vector2(2, 19.5)
+shape = SubResource("RectangleShape2D_g7b7a")
+
+[node name="DeliveryTarget" type="Area2D" parent="." unique_id=905154594 groups=["delivery_targets"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DeliveryTarget" unique_id=1803183578]
+position = Vector2(-255, -45)
+shape = SubResource("RectangleShape2D_gyc6d")

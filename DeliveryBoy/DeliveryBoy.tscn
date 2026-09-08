@@ -1,0 +1,449 @@
+[gd_scene format=3 uid="uid://bri3gklsnonnj"]
+
+[ext_resource type="Script" uid="uid://bjuf72jhq1ivx" path="res://DeliveryBoy/RoadLine.gd" id="1_6uutk"]
+[ext_resource type="Texture2D" uid="uid://dqsov7wh6ysav" path="res://DeliveryBoy/Assets/TrafficCar.png" id="1_tqavy"]
+[ext_resource type="Script" uid="uid://bdt2hbbgjghnq" path="res://DeliveryBoy/RoadLine2.gd" id="2_4rj20"]
+[ext_resource type="Script" uid="uid://2kw3b0lt1pw" path="res://DeliveryBoy/TrafficCar.gd" id="2_h3sil"]
+[ext_resource type="Script" uid="uid://balji5f81gofk" path="res://DeliveryBoy/Player.gd" id="2_tqavy"]
+[ext_resource type="Texture2D" uid="uid://cr0b7odx4rs33" path="res://DeliveryBoy/Assets/Scooter_fixed.png" id="5_f8prv"]
+[ext_resource type="FontFile" uid="uid://1d3wdqb3lvq4" path="res://PressStart2P-Regular.ttf" id="7_f8prv"]
+[ext_resource type="Texture2D" uid="uid://dbkxdc7xt4mk8" path="res://DeliveryBoy/Assets/Pothole.png" id="7_hb6x7"]
+[ext_resource type="Script" uid="uid://dktmcg276cqv8" path="res://DeliveryBoy/Pothole.gd" id="8_vu2v5"]
+[ext_resource type="PackedScene" uid="uid://djy5bxpocpa61" path="res://DeliveryBoy/House.tscn" id="8_xw3k5"]
+[ext_resource type="Script" uid="uid://odcrg028gyuq" path="res://DeliveryBoy/Parcel.gd" id="9_bt614"]
+[ext_resource type="PackedScene" uid="uid://blpe612wgltnt" path="res://DeliveryBoy/Chav.tscn" id="9_qwpht"]
+[ext_resource type="Texture2D" uid="uid://bkwfblwyy7ejf" path="res://DeliveryBoy/Assets/PickUps/Timer.png" id="12_5i4o8"]
+[ext_resource type="Texture2D" uid="uid://bu8pmtl64foss" path="res://DeliveryBoy/Assets/PickUps/ParcelStack.png" id="12_ti48r"]
+[ext_resource type="Script" uid="uid://dvgteu8awqmpf" path="res://DeliveryBoy/ParcelStack.gd" id="13_5i4o8"]
+[ext_resource type="Script" uid="uid://df0rd7qkdiktn" path="res://DeliveryBoy/Clock.gd" id="13_cnu1r"]
+[ext_resource type="Script" uid="uid://c401kph3yynua" path="res://DeliveryBoy/GameOverUI.gd" id="15_66kk5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqkgv"]
+size = Vector2(920, 472.72717)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g7b7a"]
+size = Vector2(35, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4rj20"]
+size = Vector2(35, 100)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gyc6d"]
+size = Vector2(120, 40)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f8prv"]
+atlas = ExtResource("5_f8prv")
+region = Rect2(708, 165, 354, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xw3k5"]
+atlas = ExtResource("5_f8prv")
+region = Rect2(105, 145, 354, 512)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hb6x7"]
+atlas = ExtResource("5_f8prv")
+region = Rect2(1217, 150, 556, 512)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g7b7a"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f8prv")
+}],
+"loop": 1,
+"name": &"up",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xw3k5")
+}],
+"loop": 1,
+"name": &"up_left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hb6x7")
+}],
+"loop": 1,
+"name": &"up_right",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6qx4q"]
+size = Vector2(1340, 400.00024)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xrv66"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bpo87"]
+size = Vector2(1040, 900.0005)
+
+[node name="DeliveryBoy" type="Control" unique_id=383945839]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+metadata/_edit_vertical_guides_ = [-96.0, -97.0]
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=71621842]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.31612086, 0.66251695, 0.3154851, 1)
+
+[node name="Road" type="ColorRect" parent="." unique_id=102916789]
+z_index = 2
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -176.0
+offset_right = 624.0
+offset_bottom = 1312.0
+grow_horizontal = 2
+scale = Vector2(0.5, 0.5)
+color = Color(0.05342087, 0.053420886, 0.05342088, 1)
+
+[node name="ParcelStack" type="Sprite2D" parent="Road" unique_id=1215632550]
+z_index = 2
+position = Vector2(414, 412)
+scale = Vector2(0.1, 0.11)
+texture = ExtResource("12_ti48r")
+script = ExtResource("13_5i4o8")
+
+[node name="PickupArea" type="Area2D" parent="Road/ParcelStack" unique_id=799090931]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Road/ParcelStack/PickupArea" unique_id=1335143269]
+position = Vector2(20, 218.18091)
+shape = SubResource("RectangleShape2D_hqkgv")
+
+[node name="RoadLine" type="ColorRect" parent="Road" unique_id=112364590]
+layout_mode = 0
+offset_left = 275.0
+offset_top = 440.0
+offset_right = 295.0
+offset_bottom = 540.0
+script = ExtResource("1_6uutk")
+
+[node name="RoadLine4" type="ColorRect" parent="Road" unique_id=1559013524]
+layout_mode = 0
+offset_left = 525.0
+offset_top = 440.0
+offset_right = 545.0
+offset_bottom = 540.0
+script = ExtResource("1_6uutk")
+
+[node name="RoadLine5" type="ColorRect" parent="Road" unique_id=1522733086]
+layout_mode = 0
+offset_left = 525.0
+offset_top = 740.0
+offset_right = 545.0
+offset_bottom = 840.0
+script = ExtResource("1_6uutk")
+
+[node name="RoadLine7" type="ColorRect" parent="Road" unique_id=822664608]
+layout_mode = 0
+offset_left = 525.0
+offset_top = 1040.0
+offset_right = 545.0
+offset_bottom = 1140.0
+script = ExtResource("1_6uutk")
+
+[node name="RoadLine8" type="ColorRect" parent="Road" unique_id=634356156]
+layout_mode = 0
+offset_left = 275.0
+offset_top = 1040.0
+offset_right = 295.0
+offset_bottom = 1140.0
+script = ExtResource("1_6uutk")
+
+[node name="RoadLine6" type="ColorRect" parent="Road" unique_id=253871044]
+layout_mode = 0
+offset_left = 275.0
+offset_top = 740.0
+offset_right = 295.0
+offset_bottom = 840.0
+script = ExtResource("1_6uutk")
+
+[node name="RoadLine2" type="ColorRect" parent="Road" unique_id=2082424478]
+layout_mode = 0
+offset_left = 275.0
+offset_top = 140.0
+offset_right = 295.0
+offset_bottom = 240.0
+script = ExtResource("2_4rj20")
+
+[node name="RoadLine3" type="ColorRect" parent="Road" unique_id=749883770]
+layout_mode = 0
+offset_left = 525.0
+offset_top = 140.0
+offset_right = 545.0
+offset_bottom = 240.0
+script = ExtResource("2_4rj20")
+
+[node name="TrafficCar" type="Sprite2D" parent="Road" unique_id=303934041]
+position = Vector2(650, 200)
+texture = ExtResource("1_tqavy")
+region_enabled = true
+region_rect = Rect2(1556.132, 35.162846, 182.86841, 286.7709)
+script = ExtResource("2_h3sil")
+speed = 120.0
+
+[node name="Area2D" type="Area2D" parent="Road/TrafficCar" unique_id=689741955]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Road/TrafficCar/Area2D" unique_id=1609535068]
+shape = SubResource("RectangleShape2D_g7b7a")
+
+[node name="TrafficCar2" type="Sprite2D" parent="Road" unique_id=1441431398]
+position = Vector2(150, 200)
+texture = ExtResource("1_tqavy")
+region_enabled = true
+region_rect = Rect2(1560.2881, 304.95218, 182.86841, 287.12802)
+region_filter_clip_enabled = true
+script = ExtResource("2_h3sil")
+speed = 160.0
+
+[node name="Area2D" type="Area2D" parent="Road/TrafficCar2" unique_id=1583726466]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Road/TrafficCar2/Area2D" unique_id=2070176410]
+shape = SubResource("RectangleShape2D_4rj20")
+
+[node name="TrafficCar3" type="Sprite2D" parent="Road" unique_id=1243157929]
+position = Vector2(400, 200)
+texture = ExtResource("1_tqavy")
+region_enabled = true
+region_rect = Rect2(1558.2101, 568.8645, 182.86841, 287.12802)
+region_filter_clip_enabled = true
+script = ExtResource("2_h3sil")
+speed = 140.0
+
+[node name="Area2D" type="Area2D" parent="Road/TrafficCar3" unique_id=1536227667]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Road/TrafficCar3/Area2D" unique_id=310339153]
+shape = SubResource("RectangleShape2D_4rj20")
+
+[node name="Player" type="Sprite2D" parent="Road" unique_id=1180289712 groups=["player"]]
+z_index = 2
+position = Vector2(400, 1000)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("5_f8prv")
+region_enabled = true
+region_rect = Rect2(687.6102, 150.01488, 394.72644, 541.8117)
+script = ExtResource("2_tqavy")
+chav_scene = ExtResource("9_qwpht")
+
+[node name="Area2D" type="Area2D" parent="Road/Player" unique_id=689413430]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Road/Player/Area2D" unique_id=493078719]
+show_behind_parent = true
+shape = SubResource("RectangleShape2D_gyc6d")
+debug_color = Color(0.7764706, 0, 0, 1)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Road/Player" unique_id=627909240]
+sprite_frames = SubResource("SpriteFrames_g7b7a")
+animation = &"up"
+
+[node name="Kerb" type="ColorRect" parent="Road" unique_id=1619873597]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 1312.0
+color = Color(0.3665946, 0.3665946, 0.36659458, 1)
+
+[node name="Kerb2" type="ColorRect" parent="Road" unique_id=1977483474]
+layout_mode = 0
+offset_left = 760.0
+offset_right = 800.0
+offset_bottom = 1312.0
+color = Color(0.3665946, 0.3665946, 0.36659458, 1)
+
+[node name="Pothole" type="Sprite2D" parent="Road" unique_id=287346643]
+z_index = 1
+position = Vector2(140, 400)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("7_hb6x7")
+script = ExtResource("8_vu2v5")
+
+[node name="Area2D" type="Area2D" parent="Road/Pothole" unique_id=445555333]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Road/Pothole/Area2D" unique_id=1826444945]
+position = Vector2(30, 140)
+scale = Vector2(0.9999997, 0.9999997)
+shape = SubResource("RectangleShape2D_6qx4q")
+
+[node name="Parcel" type="Area2D" parent="Road" unique_id=32173300]
+script = ExtResource("9_bt614")
+
+[node name="Sprite2D" type="Sprite2D" parent="Road/Parcel" unique_id=958231811]
+
+[node name="ParcelVisual" type="Polygon2D" parent="Road/Parcel" unique_id=338300849]
+position = Vector2(58, -288)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Road/Parcel" unique_id=1018603022]
+shape = SubResource("RectangleShape2D_xrv66")
+
+[node name="Timer" type="Sprite2D" parent="Road" unique_id=1047215426]
+position = Vector2(400, 582)
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("12_5i4o8")
+script = ExtResource("13_cnu1r")
+
+[node name="Area2D" type="Area2D" parent="Road/Timer" unique_id=790667023 groups=["time_pickups"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Road/Timer/Area2D" unique_id=509663875]
+position = Vector2(-40, -30)
+scale = Vector2(0.9999995, 0.9999995)
+shape = SubResource("RectangleShape2D_bpo87")
+
+[node name="ChavSpawn" type="Marker2D" parent="Road" unique_id=813524994]
+position = Vector2(200, 1250)
+
+[node name="House" parent="." unique_id=1302589291 groups=["houses"] instance=ExtResource("8_xw3k5")]
+z_index = 1
+position = Vector2(-300, -300)
+
+[node name="House2" parent="." unique_id=1266771010 groups=["houses"] instance=ExtResource("8_xw3k5")]
+position = Vector2(300, -50)
+
+[node name="House3" parent="." unique_id=888731893 groups=["houses"] instance=ExtResource("8_xw3k5")]
+z_index = 1
+position = Vector2(-300, 200)
+
+[node name="House4" parent="." unique_id=331269504 groups=["houses"] instance=ExtResource("8_xw3k5")]
+z_index = 1
+position = Vector2(300, 450)
+
+[node name="House5" parent="." unique_id=1232203208 groups=["houses"] instance=ExtResource("8_xw3k5")]
+z_index = 1
+position = Vector2(-300, 700)
+
+[node name="House6" parent="." unique_id=1022521676 groups=["houses"] instance=ExtResource("8_xw3k5")]
+z_index = 1
+position = Vector2(300, 950)
+
+[node name="House7" parent="." unique_id=971357952 groups=["houses"] instance=ExtResource("8_xw3k5")]
+z_index = 1
+position = Vector2(-300, 1200)
+
+[node name="House8" parent="." unique_id=2035639332 groups=["houses"] instance=ExtResource("8_xw3k5")]
+z_index = 1
+position = Vector2(300, 1450)
+
+[node name="GameOverUI" type="CanvasLayer" parent="." unique_id=148274672]
+layer = 10
+script = ExtResource("15_66kk5")
+
+[node name="Label" type="Label" parent="GameOverUI" unique_id=1105818199]
+visible = false
+z_index = 100
+custom_minimum_size = Vector2(1, 1)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -256.0
+offset_top = -50.0
+offset_right = 256.0
+offset_bottom = 50.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("7_f8prv")
+theme_override_font_sizes/font_size = 64
+text = "SQUISH !"
+horizontal_alignment = 1
+autowrap_mode = 3
+
+[node name="Fade" type="ColorRect" parent="GameOverUI" unique_id=1708497514]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="PlayAgain" type="Button" parent="GameOverUI" unique_id=1938632302]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -176.0
+offset_top = -148.0
+offset_right = -8.0
+offset_bottom = -117.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(2, 2)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("7_f8prv")
+text = "Play Again"
+
+[node name="GameUI" type="CanvasLayer" parent="." unique_id=986405137]
+
+[node name="DeliveriesLabel" type="Label" parent="GameUI" unique_id=1033604599]
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 228.0
+offset_bottom = 43.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("7_f8prv")
+text = "DELIVERIES: 0"
+
+[node name="InsultLabel" type="Label" parent="GameUI" unique_id=575192391]
+custom_minimum_size = Vector2(10, 1)
+offset_left = 20.0
+offset_top = 80.0
+offset_right = 329.0
+offset_bottom = 415.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("7_f8prv")
+autowrap_mode = 3
+uppercase = true
+
+[node name="ParcelsLabel" type="Label" parent="GameUI" unique_id=1352786026]
+offset_left = 20.0
+offset_top = 40.0
+offset_right = 196.0
+offset_bottom = 63.0
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("7_f8prv")
+text = "parcels: 10"
+
+[node name="TimeLabel" type="Label" parent="GameUI" unique_id=461826022]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -64.0
+offset_right = 64.0
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("7_f8prv")
+text = "Time: 60"
+
+[connection signal="area_entered" from="Road/ParcelStack/PickupArea" to="Road/ParcelStack" method="_on_pickup_area_area_entered"]
+[connection signal="area_entered" from="Road/TrafficCar/Area2D" to="Road/TrafficCar" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Road/TrafficCar2/Area2D" to="Road/TrafficCar2" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Road/TrafficCar3/Area2D" to="Road/TrafficCar3" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Road/Player/Area2D" to="Road/Player" method="_on_area_2d_area_entered"]
+[connection signal="area_entered" from="Road/Parcel" to="Road/Parcel" method="_on_area_entered"]
+[connection signal="area_entered" from="Road/Timer/Area2D" to="Road/Timer" method="_on_area_2d_area_entered"]
+[connection signal="pressed" from="GameOverUI/PlayAgain" to="GameOverUI" method="_on_play_again_pressed"]
