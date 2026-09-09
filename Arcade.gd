@@ -67,3 +67,19 @@ func _on_delivery_boy_button_pressed() -> void:
 	
 	get_tree().change_scene_to_file("res://DeliveryBoy/DeliveryBoy.tscn")
 	
+
+
+func _on_worm_pressed() -> void:
+	var animation_player = $AnimationPlayer
+	
+	if not animation_player.has_animation("CRT_Zoom"):
+		print("CRT_Zoom DOES NOT EXIST")
+		print(animation_player.get_animation_list())
+		return
+	
+	animation_player.play("CRT_Zoom")
+	
+	await animation_player.animation_finished
+	
+	get_tree().change_scene_to_file("res://Worm/Sewers.tscn")
+	

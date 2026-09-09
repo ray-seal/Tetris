@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://b4l0vnt7ljp3b"]
+
+[ext_resource type="PackedScene" uid="uid://c4nhdl8h8yglh" path="res://Worm/Worm.tscn" id="1_eh577"]
+[ext_resource type="Texture2D" uid="uid://cef4kjittmih1" path="res://Worm/Assets/Scenes/SewerBackground.png" id="1_lkx7h"]
+[ext_resource type="PackedScene" uid="uid://uutwhuoa536f" path="res://Worm/Food.tscn" id="2_sr3wt"]
+[ext_resource type="Script" uid="uid://nny8ib46gbci" path="res://FoodSpawns.gd" id="3_ti0j2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqkgv"]
+size = Vector2(800, 156)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6qx4q"]
+size = Vector2(800, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gyc6d"]
+size = Vector2(32, 600)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g7b7a"]
+size = Vector2(32, 600)
+
+[node name="Sewers" type="Node2D" unique_id=1041190723]
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1720215994]
+position = Vector2(401.5, 303)
+scale = Vector2(0.5253906, 0.59375)
+texture = ExtResource("1_lkx7h")
+
+[node name="WallTop" type="StaticBody2D" parent="." unique_id=9378557]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallTop" unique_id=512365144]
+position = Vector2(400, 78)
+shape = SubResource("RectangleShape2D_hqkgv")
+
+[node name="WallBottom" type="StaticBody2D" parent="." unique_id=1310050390]
+collision_layer = 2
+collision_mask = 2
+input_pickable = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallBottom" unique_id=1627075440]
+position = Vector2(400, 584)
+shape = SubResource("RectangleShape2D_6qx4q")
+
+[node name="WallLeft" type="StaticBody2D" parent="." unique_id=184687272]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallLeft" unique_id=1809585362]
+position = Vector2(16, 300)
+shape = SubResource("RectangleShape2D_gyc6d")
+
+[node name="WallRight" type="StaticBody2D" parent="." unique_id=847505704]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallRight" unique_id=1621945670]
+position = Vector2(784, 300)
+shape = SubResource("RectangleShape2D_g7b7a")
+
+[node name="Worm" parent="." unique_id=1571759697 instance=ExtResource("1_eh577")]
+position = Vector2(400, 300)
+scale = Vector2(0.5, 0.5)
+
+[node name="Food" parent="." unique_id=1044974301 instance=ExtResource("2_sr3wt")]
+visible = false
+position = Vector2(577, 409)
+scale = Vector2(0.35, 0.35)
+
+[node name="FoodSpawn" type="Marker2D" parent="." unique_id=398915695]
+visible = false
+
+[node name="FoodSpawns" type="Node2D" parent="." unique_id=1449537548]
+position = Vector2(182, 314)
+scale = Vector2(0.35, 0.35)
+script = ExtResource("3_ti0j2")
+food_scene = ExtResource("2_sr3wt")
+
+[node name="Spawn1" type="Marker2D" parent="FoodSpawns" unique_id=221647428]
+position = Vector2(125, 300)
+
+[node name="Spawn2" type="Marker2D" parent="FoodSpawns" unique_id=2114280489]
+position = Vector2(400, 200)
+
+[node name="Spawn3" type="Marker2D" parent="FoodSpawns" unique_id=1876317243]
+position = Vector2(450, 100)
+
+[node name="Spawn4" type="Marker2D" parent="FoodSpawns" unique_id=680735512]
+position = Vector2(600, 400)

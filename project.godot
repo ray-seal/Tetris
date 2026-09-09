@@ -18,7 +18,6 @@ config/icon="res://icon.svg"
 [display]
 
 window/stretch/mode="canvas_items"
-window/handheld/orientation=1
 
 [physics]
 

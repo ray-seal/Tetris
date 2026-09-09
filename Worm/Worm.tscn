@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://c4nhdl8h8yglh"]
+
+[ext_resource type="Script" uid="uid://bqsfjbo3a87ix" path="res://Worm/Worm.gd" id="1_ox5vq"]
+[ext_resource type="Texture2D" uid="uid://xla7vhs15nx2" path="res://Worm/Assets/Worm.png" id="1_q71ti"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ox5vq"]
+size = Vector2(64, 64)
+
+[node name="Worm" type="Node2D" unique_id=1571759697]
+position = Vector2(444, 239)
+script = ExtResource("1_ox5vq")
+
+[node name="Head" type="Sprite2D" parent="." unique_id=103534968]
+position = Vector2(110, 0)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("1_q71ti")
+hframes = 4
+vframes = 3
+region_rect = Rect2(106.3692, 24.076067, 377.31793, 196.86153)
+
+[node name="HeadArea" type="Area2D" parent="Head" unique_id=1375236541]
+position = Vector2(-314.28564, 0)
+scale = Vector2(2.8571427, 2.8571427)
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Head/HeadArea" unique_id=1728733275]
+position = Vector2(100, 0)
+shape = SubResource("RectangleShape2D_ox5vq")
+
+[node name="Mid" type="Sprite2D" parent="." unique_id=1233045780]
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("1_q71ti")
+hframes = 4
+vframes = 3
+frame = 4
+
+[node name="Ass" type="Sprite2D" parent="." unique_id=451805566]
+position = Vector2(-110, 0)
+scale = Vector2(0.35, 0.35)
+texture = ExtResource("1_q71ti")
+hframes = 4
+vframes = 3
+frame = 9
+
+[connection signal="area_entered" from="Head/HeadArea" to="." method="_on_head_area_area_entered"]
