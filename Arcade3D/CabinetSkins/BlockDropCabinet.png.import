@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cw4h5gmkru7w3"
-path.s3tc="res://.godot/imported/Carpet.png-0046b67fdbd8fee1ab2392e610a5ad18.s3tc.ctex"
-path.etc2="res://.godot/imported/Carpet.png-0046b67fdbd8fee1ab2392e610a5ad18.etc2.ctex"
+uid="uid://drpncs7o0n303"
+path.s3tc="res://.godot/imported/BlockDropCabinet.png-b035107764a13ac11b38e605dce7f733.s3tc.ctex"
+path.etc2="res://.godot/imported/BlockDropCabinet.png-b035107764a13ac11b38e605dce7f733.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://Arcade3D/Carpet.png"
-dest_files=["res://.godot/imported/Carpet.png-0046b67fdbd8fee1ab2392e610a5ad18.s3tc.ctex", "res://.godot/imported/Carpet.png-0046b67fdbd8fee1ab2392e610a5ad18.etc2.ctex"]
+source_file="res://Arcade3D/CabinetSkins/BlockDropCabinet.png"
+dest_files=["res://.godot/imported/BlockDropCabinet.png-b035107764a13ac11b38e605dce7f733.s3tc.ctex", "res://.godot/imported/BlockDropCabinet.png-b035107764a13ac11b38e605dce7f733.etc2.ctex"]
 
 [params]
 

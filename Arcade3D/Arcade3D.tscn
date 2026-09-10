@@ -6,6 +6,7 @@
 [ext_resource type="FontFile" uid="uid://1d3wdqb3lvq4" path="res://PressStart2P-Regular.ttf" id="3_hk705"]
 [ext_resource type="Script" uid="uid://cyouatjuokd1q" path="res://Arcade3D/InsertCoin.gd" id="4_nsuf8"]
 [ext_resource type="PackedScene" uid="uid://cx1bhecign8a7" path="res://Arcade3D/ArcadeMachineV1.fbx" id="6_nsuf8"]
+[ext_resource type="Texture2D" uid="uid://drpncs7o0n303" path="res://Arcade3D/CabinetSkins/BlockDropCabinet.png" id="7_1wlxx"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dl8kl"]
 
@@ -22,21 +23,29 @@ size = Vector3(20, 0.1, 20)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dl8kl"]
 albedo_color = Color(0, 0, 0, 1)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nsuf8"]
+albedo_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+albedo_texture = ExtResource("7_1wlxx")
+roughness = 0.85
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n3gx8"]
+albedo_color = Color(0.14509805, 0.14509805, 0.14509805, 1)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_6wp04"]
 size = Vector3(1.5, 1.5, 1)
 
 [node name="Arcade3D" type="Node3D" unique_id=2013108557]
 script = ExtResource("1_84x75")
 
-[node name="Player" type="CharacterBody3D" parent="." unique_id=2032863775]
+[node name="Player3D" type="CharacterBody3D" parent="." unique_id=2032863775]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0819645, 0)
 script = ExtResource("2_hk705")
 
-[node name="Camera3D" type="Camera3D" parent="Player" unique_id=1025660705]
+[node name="Camera3D" type="Camera3D" parent="Player3D" unique_id=1025660705]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
 current = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player" unique_id=271033974]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Player3D" unique_id=271033974]
 shape = SubResource("CapsuleShape3D_dl8kl")
 
 [node name="Floor" type="MeshInstance3D" parent="." unique_id=158165919]
@@ -50,6 +59,7 @@ shape = SubResource("BoxShape3D_dl8kl")
 
 [node name="BlockDropCabinet" type="CSGBox3D" parent="." unique_id=986161081]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.3449683, 2.01469, 2.2056613)
+visible = false
 size = Vector3(2.5, 4, 1.2)
 
 [node name="Body" type="CSGBox3D" parent="BlockDropCabinet" unique_id=2035075415]
@@ -88,16 +98,31 @@ transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 2
 text = "BLOCK DROP
 "
 
-[node name="InteractionArea" type="Area3D" parent="BlockDropCabinet" unique_id=490774770]
+[node name="ArcadeMachineV1" parent="." unique_id=921472525 instance=ExtResource("6_nsuf8")]
+transform = Transform3D(2.5, 0, -1.5893255e-07, 0, 2.5, 0, 1.5893255e-07, 0, 2.5, -1.1620283, 0.1821413, -6.631307)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="BlockDropCabinet/InteractionArea" unique_id=425202483]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.75, -1)
+[node name="ArcadeMachineV1" parent="ArcadeMachineV1" index="0" unique_id=879994366]
+surface_material_override/0 = SubResource("StandardMaterial3D_nsuf8")
+surface_material_override/1 = SubResource("StandardMaterial3D_n3gx8")
+
+[node name="Label3D" type="Label3D" parent="ArcadeMachineV1" unique_id=646957940]
+transform = Transform3D(0.17500003, 0, -1.7763568e-15, 0, 0.17500003, 0, 1.7763568e-15, 0, 0.17500003, 0.32885414, 1.4849273, 0.64900863)
+modulate = Color(1, 1, 0, 1)
+text = "Block Drop"
+font = ExtResource("3_hk705")
+font_size = 64
+outline_size = 8
+
+[node name="InteractionArea" type="Area3D" parent="ArcadeMachineV1" unique_id=490774770]
+transform = Transform3D(-0.2777778, 0, -4.1943274e-08, 0, 0.2777778, 0, 4.1943274e-08, 0, -0.2777778, -0.6063721, 0.5090413, 2.4547136)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ArcadeMachineV1/InteractionArea" unique_id=425202483]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3629112, 0.75, 6.7252483)
 shape = SubResource("BoxShape3D_6wp04")
-
-[node name="ArcadeMachineV1" parent="BlockDropCabinet" unique_id=921472525 instance=ExtResource("6_nsuf8")]
-transform = Transform3D(-3.6, 0, 5.4358486e-07, 0, 3.6, 0, -5.4358486e-07, 0, -3.6, 1.1828167, -1.9646411, 0.9522809)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1569076737]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0)
 
-[connection signal="body_entered" from="BlockDropCabinet/InteractionArea" to="." method="_on_interaction_area_body_entered"]
+[connection signal="body_entered" from="ArcadeMachineV1/InteractionArea" to="." method="_on_interaction_area_body_entered"]
+
+[editable path="ArcadeMachineV1"]

@@ -1,15 +1,18 @@
 extends Node3D
 
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
+var player_near_machine := false
 
 func _on_interaction_area_body_entered(body: Node3D) -> void:
-	pass # Replace with function body.
+	if body.name == "Player3D":
+		player_near_machine = true
+		
+func _on_interaction_area_body_exited(body: Node3D):
+	if body.name == "Player3D":
+		player_near_machine = false
+		
+func _input(event):
+	if player_near_machine and event is InputEventKey and event.pressed:
+		if event.keycode == KEY_SPACE or event.keycode == KEY_Q:
+			get_tree().change_scene_to_file("res://BlockDrop/BlockDrop.tscn")
+			
+			
