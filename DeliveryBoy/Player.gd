@@ -25,8 +25,8 @@ func _ready():
 	$"../../GameUI/ParcelsLabel".text = "PARCELS: " + str(parcels)
 	$"../../GameUI/TimeLabel".text = "TIME: 60"
 
+	# Game Over UI starts hidden
 	$"../../GameOverUI".hide()
-	$"../../GameOverUI".show()
 
 	# --------------------------------
 	# FIND EXISTING ROAD OBJECTS
@@ -60,11 +60,13 @@ func _ready():
 		pickups.append(clock)
 		clock.hide()
 		clock.set_process(false)
-		print("HAZARDS FOUND: ", hazards.size())
-		print("PICKUPS FOUND: ", pickups.size())
+
+	print("HAZARDS FOUND: ", hazards.size())
+	print("PICKUPS FOUND: ", pickups.size())
 
 	# Start random spawning AFTER lists are populated
 	start_random_spawning()
+
 
 func find_node_by_name(node: Node, wanted_name: String) -> Node:
 
@@ -102,13 +104,7 @@ func _process(delta):
 
 		print("TIME UP!")
 
-		set_process(false)
-		set_physics_process(false)
-
-		$"../../GameOverUI/Label".text = "TIMES UP!"
-		$"../../GameOverUI/Label".show()
-		$"../../GameOverUI/Fade".show()
-		$"../../GameOverUI/PlayAgain".show()
+		show_game_over("TIMES UP!")
 
 		return
 
@@ -197,6 +193,7 @@ func _input(event):
 					move_right()
 
 			touch_active = false
+
 
 func move_left():
 
@@ -311,6 +308,8 @@ func spawn_random_hazard():
 			" LANE: ",
 			lane
 		)
+
+
 # --------------------------------
 # RANDOM PICKUP
 # --------------------------------
@@ -355,6 +354,8 @@ func spawn_random_pickup():
 			" LANE: ",
 			lane
 		)
+
+
 # --------------------------------
 # RANDOM SPAWN TEST
 # --------------------------------
@@ -370,35 +371,46 @@ func test_random_spawn():
 
 
 # --------------------------------
+# GAME OVER
+# --------------------------------
+
+func show_game_over(message: String):
+
+	print("GAME OVER: ", message)
+
+	set_process(false)
+	set_physics_process(false)
+
+	$"../../GameOverUI".show()
+
+	$"../../GameOverUI/Label".text = message
+	$"../../GameOverUI/Label".show()
+
+	$"../../GameOverUI/Fade".show()
+	$"../../GameOverUI/PlayAgain".show()
+	$"../../GameOverUI/BackToArcade".show()
+
+
+# --------------------------------
 # PLAYER COLLISIONS
 # --------------------------------
 
 func _on_area_2d_area_entered(area: Area2D):
-	
+
 	if area.get_parent().name in ["TrafficCar", "TrafficCar2", "TrafficCar3"]:
+
 		print("TRAFFIC CAR HIT!")
 
-		set_process(false)
-		set_physics_process(false)
-
-		$"../../GameOverUI/Label".text = "SQUISH!!"
-		$"../../GameOverUI/Label".show()
-		$"../../GameOverUI/Fade".show()
-		$"../../GameOverUI/PlayAgain".show()
+		show_game_over("SQUISH!!")
 
 		return
-		
+
+
 	if area.get_parent().name == "Chav":
 
 		print("CHAV HIT!")
 
-		set_process(false)
-		set_physics_process(false)
-
-		$"../../GameOverUI/Label".text = "Watch it bruv!"
-		$"../../GameOverUI/Label".show()
-		$"../../GameOverUI/Fade".show()
-		$"../../GameOverUI/PlayAgain".show()
+		show_game_over("Watch it bruv!")
 
 		return
 
@@ -456,11 +468,8 @@ func _on_area_2d_area_entered(area: Area2D):
 
 		await tween.finished
 
-		# Show game over message
-		$"../../GameOverUI/Label".text = "Can't park there, sir!"
-		$"../../GameOverUI/Label".show()
-		$"../../GameOverUI/Fade".show()
-		$"../../GameOverUI/PlayAgain".show()
+		show_game_over("Can't park there, sir!")
+
 
 func start_random_spawning():
 

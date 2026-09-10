@@ -181,12 +181,14 @@ func die():
 
 	var death_screen = CanvasLayer.new()
 	death_screen.layer = 100
+	death_screen.process_mode = Node.PROCESS_MODE_ALWAYS
 	add_child(death_screen)
 
 	var black = ColorRect.new()
 	black.color = Color.BLACK
 	black.set_anchors_and_offsets_preset(Control.PRESET_FULL_RECT)
-	black.mouse_filter = Control.MOUSE_FILTER_STOP
+	black.mouse_filter = Control.MOUSE_FILTER_IGNORE
+	black.process_mode = Node.PROCESS_MODE_ALWAYS
 	death_screen.add_child(black)
 
 	var font = load("res://PressStart2P-Regular.ttf")
@@ -198,6 +200,7 @@ func die():
 	layout.size = Vector2(600, 300)
 	layout.alignment = BoxContainer.ALIGNMENT_CENTER
 	layout.add_theme_constant_override("separation", 20)
+	layout.process_mode = Node.PROCESS_MODE_ALWAYS
 	black.add_child(layout)
 
 	# Death message
@@ -210,6 +213,7 @@ func die():
 	message.add_theme_font_override("font", font)
 	message.add_theme_font_size_override("font_size", 24)
 	message.add_theme_color_override("font_color", Color("#7CFF00"))
+	message.process_mode = Node.PROCESS_MODE_ALWAYS
 	layout.add_child(message)
 
 	# Play Again button
@@ -219,11 +223,24 @@ func die():
 	button.add_theme_font_size_override("font_size", 20)
 	button.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 	button.process_mode = Node.PROCESS_MODE_ALWAYS
+	button.mouse_filter = Control.MOUSE_FILTER_STOP
 	layout.add_child(button)
 
 	button.pressed.connect(restart_game)
 
-	# Score underneath the button
+	# Back to Arcade button
+	var arcade_button = Button.new()
+	arcade_button.text = "BACK TO ARCADE"
+	arcade_button.custom_minimum_size = Vector2(200, 60)
+	arcade_button.add_theme_font_size_override("font_size", 20)
+	arcade_button.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
+	arcade_button.process_mode = Node.PROCESS_MODE_ALWAYS
+	arcade_button.mouse_filter = Control.MOUSE_FILTER_STOP
+	layout.add_child(arcade_button)
+
+	arcade_button.pressed.connect(back_to_arcade)
+
+	# Score underneath the buttons
 	var score_label = Label.new()
 	score_label.text = "SCORE: " + str(eaten_count)
 	score_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
@@ -231,12 +248,18 @@ func die():
 	score_label.add_theme_font_override("font", font)
 	score_label.add_theme_font_size_override("font_size", 20)
 	score_label.add_theme_color_override("font_color", Color("#7CFF00"))
+	score_label.process_mode = Node.PROCESS_MODE_ALWAYS
 	layout.add_child(score_label)
+
 
 func restart_game():
 	get_tree().paused = false
 	get_tree().reload_current_scene()
 
+
+func back_to_arcade():
+	get_tree().paused = false
+	get_tree().change_scene_to_file("res://Arcade.tscn")
 
 func _on_head_area_body_entered(body: Node2D):
 	die()

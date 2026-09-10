@@ -377,9 +377,9 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -176.0
-offset_top = -148.0
+offset_top = -198.0
 offset_right = -8.0
-offset_bottom = -117.0
+offset_bottom = -167.0
 grow_horizontal = 2
 grow_vertical = 0
 scale = Vector2(2, 2)
@@ -388,6 +388,26 @@ theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 4
 theme_override_fonts/font = ExtResource("7_f8prv")
 text = "Play Again"
+
+[node name="BackToArcade" type="Button" parent="GameOverUI" unique_id=439989638]
+visible = false
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -208.0
+offset_top = -98.0
+offset_right = 24.0
+offset_bottom = -67.0
+grow_horizontal = 2
+grow_vertical = 0
+scale = Vector2(2, 2)
+theme_override_colors/font_color = Color(1, 1, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("7_f8prv")
+text = "Back To Arcade"
 
 [node name="GameUI" type="CanvasLayer" parent="." unique_id=986405137]
 
@@ -447,3 +467,4 @@ text = "Time: 60"
 [connection signal="area_entered" from="Road/Parcel" to="Road/Parcel" method="_on_area_entered"]
 [connection signal="area_entered" from="Road/Timer/Area2D" to="Road/Timer" method="_on_area_2d_area_entered"]
 [connection signal="pressed" from="GameOverUI/PlayAgain" to="GameOverUI" method="_on_play_again_pressed"]
+[connection signal="pressed" from="GameOverUI/BackToArcade" to="GameOverUI" method="_on_back_to_arcade_pressed"]
