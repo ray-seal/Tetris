@@ -6,6 +6,7 @@ extends Node2D
 @onready var head: Sprite2D = $Head
 @onready var mid: Sprite2D = $Mid
 @onready var ass: Sprite2D = $Ass
+@onready var basilisk_entrance: Sprite2D = get_node_or_null("../BasiliskEntrance")
 
 var direction := Vector2.RIGHT
 var next_direction := Vector2.RIGHT
@@ -29,7 +30,9 @@ func _ready():
 	head.position = snap_to_grid(head.position)
 	mid.position = snap_to_grid(mid.position)
 	ass.position = snap_to_grid(ass.position)
-
+	
+	if basilisk_entrance:
+		basilisk_entrance.visible = false
 
 func snap_to_grid(pos: Vector2) -> Vector2:
 	return Vector2(
@@ -170,11 +173,13 @@ func grow_worm():
 	# Insert it immediately before the tail.
 	body_segments.insert(body_segments.size() - 1, new_mid)
 
-	# Increase the score.
 	eaten_count += 1
 
 	print("Eaten: ", eaten_count)
 
+	if eaten_count >= 10:
+		if basilisk_entrance:
+			basilisk_entrance.visible = true
 
 func die():
 	get_tree().paused = true
@@ -287,3 +292,10 @@ func can_move_to(new_position: Vector2) -> bool:
 				return false
 
 	return true
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.name == "HeadArea":
+		get_tree().call_deferred("change_scene_to_file", "res://Worm/BasiliskChamber.tscn")
+		
+	

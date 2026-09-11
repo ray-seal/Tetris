@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://78685osxr2k7"]
+
+[ext_resource type="PackedScene" uid="uid://c4nhdl8h8yglh" path="res://Worm/Worm.tscn" id="1_47n5v"]
+[ext_resource type="PackedScene" uid="uid://uutwhuoa536f" path="res://Worm/Food.tscn" id="2_1ut7j"]
+[ext_resource type="Script" uid="uid://nny8ib46gbci" path="res://FoodSpawns.gd" id="3_yxehd"]
+[ext_resource type="Texture2D" uid="uid://c601y10pfsi37" path="res://Worm/Assets/Scenes/WormChamberRoom.png" id="4_1ut7j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7f1rn"]
+size = Vector2(800, 156)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1er67"]
+size = Vector2(800, 32)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nvb6g"]
+size = Vector2(32, 600)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dweas"]
+size = Vector2(32, 600)
+
+[node name="Node2D" type="Node2D" unique_id=597386363]
+
+[node name="WallTop" type="StaticBody2D" parent="." unique_id=1090532981]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallTop" unique_id=1472015019]
+position = Vector2(400, 78)
+shape = SubResource("RectangleShape2D_7f1rn")
+
+[node name="WallBottom" type="StaticBody2D" parent="." unique_id=1546697281]
+collision_layer = 2
+collision_mask = 2
+input_pickable = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallBottom" unique_id=164696981]
+position = Vector2(400, 584)
+shape = SubResource("RectangleShape2D_1er67")
+
+[node name="WallLeft" type="StaticBody2D" parent="." unique_id=111241228]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallLeft" unique_id=1891755537]
+position = Vector2(16, 300)
+shape = SubResource("RectangleShape2D_nvb6g")
+
+[node name="WallRight" type="StaticBody2D" parent="." unique_id=1089602617]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WallRight" unique_id=500322778]
+position = Vector2(784, 300)
+shape = SubResource("RectangleShape2D_dweas")
+
+[node name="Worm" parent="." unique_id=1571759697 instance=ExtResource("1_47n5v")]
+z_index = 1
+position = Vector2(350, 550)
+scale = Vector2(0.5, 0.5)
+
+[node name="Food" parent="." unique_id=1044974301 instance=ExtResource("2_1ut7j")]
+visible = false
+position = Vector2(577, 409)
+scale = Vector2(0.35, 0.35)
+
+[node name="FoodSpawn" type="Marker2D" parent="." unique_id=493761913]
+visible = false
+
+[node name="FoodSpawns" type="Node2D" parent="." unique_id=1650445870]
+position = Vector2(182, 314)
+scale = Vector2(0.35, 0.35)
+script = ExtResource("3_yxehd")
+food_scene = ExtResource("2_1ut7j")
+
+[node name="Spawn1" type="Marker2D" parent="FoodSpawns" unique_id=1541178197]
+position = Vector2(125, 300)
+
+[node name="Spawn2" type="Marker2D" parent="FoodSpawns" unique_id=1581172903]
+position = Vector2(400, 200)
+
+[node name="Spawn3" type="Marker2D" parent="FoodSpawns" unique_id=1951582320]
+position = Vector2(450, 100)
+
+[node name="Spawn4" type="Marker2D" parent="FoodSpawns" unique_id=1885957348]
+position = Vector2(600, 400)
+
+[node name="Background" type="Sprite2D" parent="." unique_id=1851233712]
+
+[node name="WormChamberRoom" type="Sprite2D" parent="." unique_id=799008605]
+position = Vector2(399.5, 299.5)
+scale = Vector2(0.5201823, 0.5830078)
+texture = ExtResource("4_1ut7j")

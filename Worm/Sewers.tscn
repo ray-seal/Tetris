@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://cef4kjittmih1" path="res://Worm/Assets/Scenes/SewerBackground.png" id="1_lkx7h"]
 [ext_resource type="PackedScene" uid="uid://uutwhuoa536f" path="res://Worm/Food.tscn" id="2_sr3wt"]
 [ext_resource type="Script" uid="uid://nny8ib46gbci" path="res://FoodSpawns.gd" id="3_ti0j2"]
+[ext_resource type="Texture2D" uid="uid://dwqomj5tsql7g" path="res://Worm/Assets/Scenes/SewerDoorway.png" id="5_03jvg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hqkgv"]
 size = Vector2(800, 156)
@@ -16,6 +17,9 @@ size = Vector2(32, 600)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g7b7a"]
 size = Vector2(32, 600)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dl8kl"]
+radius = 494.94247
 
 [node name="Sewers" type="Node2D" unique_id=1041190723]
 
@@ -58,6 +62,7 @@ position = Vector2(784, 300)
 shape = SubResource("RectangleShape2D_g7b7a")
 
 [node name="Worm" parent="." unique_id=1571759697 instance=ExtResource("1_eh577")]
+z_index = 3
 position = Vector2(400, 300)
 scale = Vector2(0.5, 0.5)
 
@@ -86,3 +91,18 @@ position = Vector2(450, 100)
 
 [node name="Spawn4" type="Marker2D" parent="FoodSpawns" unique_id=680735512]
 position = Vector2(600, 400)
+
+[node name="BasiliskEntrance" type="Sprite2D" parent="." unique_id=2002588234]
+z_index = 2
+position = Vector2(401.35, 122.875)
+scale = Vector2(0.10240173, 0.105021834)
+texture = ExtResource("5_03jvg")
+
+[node name="Area2D" type="Area2D" parent="BasiliskEntrance" unique_id=315681381]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BasiliskEntrance/Area2D" unique_id=1022739445]
+shape = SubResource("CircleShape2D_dl8kl")
+
+[connection signal="area_entered" from="BasiliskEntrance/Area2D" to="Worm" method="_on_area_2d_area_entered"]

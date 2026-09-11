@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cx1bhecign8a7"
-path="res://.godot/imported/ArcadeMachineV1.fbx-f57867eff0a697b5bd1f6139aad5f567.scn"
+uid="uid://cga72r8nuar1r"
+path="res://.godot/imported/ArcadeMachineV2.fbx-e745403f720ad93da3d787218bdde5f2.scn"
 
 [deps]
 
-source_file="res://Arcade3D/ArcadeMachineV1.fbx"
-dest_files=["res://.godot/imported/ArcadeMachineV1.fbx-f57867eff0a697b5bd1f6139aad5f567.scn"]
+source_file="res://Arcade3D/ArcadeMachineV2.fbx"
+dest_files=["res://.godot/imported/ArcadeMachineV2.fbx-e745403f720ad93da3d787218bdde5f2.scn"]
 
 [params]
 
@@ -44,12 +44,12 @@ _subresources={
 "ObjectAccent": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Arcade3D/CabinetSkins/BlockDrop_Accents_Dusty.tres",
-"use_external/path": "res://Arcade3D/CabinetSkins/BlockDrop_Accents_Dusty.tres"
+"use_external/path": "uid://by0reuid2pbbr"
 },
 "PolyPack_Main1": {
 "use_external/enabled": true,
 "use_external/fallback_path": "res://Arcade3D/CabinetSkins/BlockDrop_MainBody_Dusty.tres",
-"use_external/path": "res://Arcade3D/CabinetSkins/BlockDrop_MainBody_Dusty.tres"
+"use_external/path": "uid://dkp7v0bh5ajqx"
 }
 }
 }
