@@ -2,22 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ttquey4dd1pv"
-path.s3tc="res://.godot/imported/WormScreen.png-ab4c70618148352de10c184cba7d4157.s3tc.ctex"
-path.etc2="res://.godot/imported/WormScreen.png-ab4c70618148352de10c184cba7d4157.etc2.ctex"
+uid="uid://d2sebx7uxn4ed"
+path="res://.godot/imported/1K_PlasticPallet_Normal_DirectX.png-6b83e0f90474f6082f5218137f2c7e85.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://Arcade3D/CabinetSkins/Worm/WormScreen.png"
-dest_files=["res://.godot/imported/WormScreen.png-ab4c70618148352de10c184cba7d4157.s3tc.ctex", "res://.godot/imported/WormScreen.png-ab4c70618148352de10c184cba7d4157.etc2.ctex"]
+source_file="res://Store3D/StoreAssets/textures/1K_PlasticPallet_Normal_DirectX.png"
+dest_files=["res://.godot/imported/1K_PlasticPallet_Normal_DirectX.png-6b83e0f90474f6082f5218137f2c7e85.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/uastc_level=0
@@ -25,7 +23,7 @@ compress/rdo_quality_loss=0.0
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -39,4 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

@@ -7,6 +7,7 @@ const SPEED = 5.0
 
 var camera_pitch := 0.0
 var can_move := true
+var nearby_delivery: Node3D = null
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -22,7 +23,11 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-
+	
+	if Input.is_action_just_pressed("interact") and nearby_delivery:
+		nearby_delivery.queue_free()
+		nearby_delivery = null
+		
 	if can_move:
 		# Left / Right Movement
 		var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
@@ -35,3 +40,18 @@ func _physics_process(delta: float) -> void:
 		velocity.z = 0
 	
 	move_and_slide()
+
+
+func _on_interaction_area_body_entered(body: Node3D) -> void:
+	if body == self:
+		var delivery = get_tree().get_first_node_in_group("delivery")
+		if delivery:
+			nearby_delivery = delivery
+			print("Player is near delivery box")
+	
+func _on_interaction_area_body_exited(body: Node3D) -> void:
+	if body == self:
+		nearby_delivery = null
+		
+	
+	

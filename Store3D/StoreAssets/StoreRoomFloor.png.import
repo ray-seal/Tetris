@@ -2,9 +2,9 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ttquey4dd1pv"
-path.s3tc="res://.godot/imported/WormScreen.png-ab4c70618148352de10c184cba7d4157.s3tc.ctex"
-path.etc2="res://.godot/imported/WormScreen.png-ab4c70618148352de10c184cba7d4157.etc2.ctex"
+uid="uid://38yw0q16jd8h"
+path.s3tc="res://.godot/imported/StoreRoomFloor.png-008baf88c5417efa15f87e5f1d700d77.s3tc.ctex"
+path.etc2="res://.godot/imported/StoreRoomFloor.png-008baf88c5417efa15f87e5f1d700d77.etc2.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
@@ -12,8 +12,8 @@ metadata={
 
 [deps]
 
-source_file="res://Arcade3D/CabinetSkins/Worm/WormScreen.png"
-dest_files=["res://.godot/imported/WormScreen.png-ab4c70618148352de10c184cba7d4157.s3tc.ctex", "res://.godot/imported/WormScreen.png-ab4c70618148352de10c184cba7d4157.etc2.ctex"]
+source_file="res://Store3D/StoreAssets/StoreRoomFloor.png"
+dest_files=["res://.godot/imported/StoreRoomFloor.png-008baf88c5417efa15f87e5f1d700d77.s3tc.ctex", "res://.godot/imported/StoreRoomFloor.png-008baf88c5417efa15f87e5f1d700d77.etc2.ctex"]
 
 [params]
 

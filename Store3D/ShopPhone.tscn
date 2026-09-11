@@ -1,0 +1,230 @@
+[gd_scene format=3 uid="uid://c7u7vkcxwqgbb"]
+
+[ext_resource type="Script" uid="uid://y06yu44jlhf" path="res://Store3D/ShopPhone.gd" id="1_nbluc"]
+[ext_resource type="Resource" uid="uid://csrmo0re264an" path="res://Store3D/StoreProducts/ChocolateBars.tres" id="2_gfulx"]
+[ext_resource type="Resource" uid="uid://caejht5rvvwnp" path="res://Store3D/StoreProducts/Cola.tres" id="3_g47ck"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7lei4"]
+bg_color = Color(1, 0.96862745, 0.9254902, 1)
+border_width_left = 6
+border_width_top = 6
+border_width_right = 6
+border_width_bottom = 6
+border_color = Color(0.95686275, 0.4862745, 0, 1)
+corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g7b7a"]
+bg_color = Color(1, 0.99215686, 0.972549, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.84705883, 0.7882353, 0.70980394, 1)
+border_blend = true
+
+[node name="ShopPhone" type="CanvasLayer" unique_id=222336072]
+process_mode = 3
+script = ExtResource("1_nbluc")
+chocolate_product = ExtResource("2_gfulx")
+cola_product = ExtResource("3_g47ck")
+
+[node name="PhonePanel" type="Panel" parent="." unique_id=372286524]
+offset_right = 424.0
+offset_bottom = 700.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_7lei4")
+
+[node name="AppHeader" type="ColorRect" parent="PhonePanel" unique_id=1848704581]
+layout_mode = 0
+offset_right = 424.0
+offset_bottom = 150.0
+color = Color(0.95686275, 0.4862745, 0, 1)
+
+[node name="PhoneTitle" type="Label" parent="PhonePanel" unique_id=1494457931]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 30.0
+offset_right = 399.0
+offset_bottom = 80.0
+theme_override_font_sizes/font_size = 32
+text = "SAINTBURIED"
+horizontal_alignment = 1
+
+[node name="TagLine" type="Label" parent="PhonePanel/PhoneTitle" unique_id=1853328480]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 85.0
+offset_right = 399.0
+offset_bottom = 120.0
+text = "WE DELIVER. YOU PAY."
+horizontal_alignment = 1
+
+[node name="OrderTitle" type="Label" parent="PhonePanel" unique_id=1984413884]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 165.0
+offset_right = 399.0
+offset_bottom = 210.0
+text = "ORDER STOCK"
+
+[node name="OrderTotal" type="Label" parent="PhonePanel" unique_id=806507377]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 600.0
+offset_right = 399.0
+offset_bottom = 640.0
+theme_override_colors/font_color = Color(0.22745098, 0.14117648, 0.08235294, 1)
+theme_override_font_sizes/font_size = 22
+text = "TOTAL: £0.00"
+horizontal_alignment = 2
+
+[node name="PlaceOrderButton" type="Button" parent="PhonePanel" unique_id=2029876997]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 505.0
+offset_right = 399.0
+offset_bottom = 560.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 22
+text = "PLACE ORDER"
+
+[node name="ProductScroll" type="ScrollContainer" parent="PhonePanel" unique_id=876209616]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 155.0
+offset_right = 399.0
+offset_bottom = 485.0
+
+[node name="ProductList" type="VBoxContainer" parent="PhonePanel/ProductScroll" unique_id=1157484306]
+custom_minimum_size = Vector2(0, 374)
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="ColaCard" type="Panel" parent="PhonePanel/ProductScroll/ProductList" unique_id=2106932771]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_g7b7a")
+
+[node name="ColaName" type="Label" parent="PhonePanel/ProductScroll/ProductList/ColaCard" unique_id=1073926194]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 12.0
+offset_right = 220.0
+offset_bottom = 47.0
+theme_override_colors/font_color = Color(0.22745098, 0.14117648, 0.08235294, 1)
+theme_override_font_sizes/font_size = 20
+text = "Cola"
+
+[node name="ColaQuantity" type="Label" parent="PhonePanel/ProductScroll/ProductList/ColaCard" unique_id=67471613]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 47.0
+offset_right = 220.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.41960785, 0.34509805, 0.28235295, 1)
+theme_override_font_sizes/font_size = 15
+text = "Box of 12"
+
+[node name="ColaPrice" type="Label" parent="PhonePanel/ProductScroll/ProductList/ColaCard" unique_id=1349894772]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 72.0
+offset_right = 140.0
+offset_bottom = 97.0
+theme_override_colors/font_color = Color(0.95686275, 0.4862745, 0, 1)
+theme_override_font_sizes/font_size = 18
+text = "£10.00"
+
+[node name="ColaMinus" type="Button" parent="PhonePanel/ProductScroll/ProductList/ColaCard" unique_id=783483012]
+layout_mode = 0
+offset_left = 225.0
+offset_top = 32.0
+offset_right = 265.0
+offset_bottom = 72.0
+theme_override_font_sizes/font_size = 22
+text = "-"
+
+[node name="ColaAmount" type="Label" parent="PhonePanel/ProductScroll/ProductList/ColaCard" unique_id=368332430]
+layout_mode = 0
+offset_left = 270.0
+offset_top = 35.0
+offset_right = 315.0
+offset_bottom = 70.0
+theme_override_colors/font_color = Color(0.22745098, 0.14117648, 0.08235294, 1)
+theme_override_font_sizes/font_size = 22
+text = "0"
+
+[node name="ColaPlus" type="Button" parent="PhonePanel/ProductScroll/ProductList/ColaCard" unique_id=681625212]
+layout_mode = 0
+offset_left = 325.0
+offset_top = 32.0
+offset_right = 365.0
+offset_bottom = 72.0
+theme_override_font_sizes/font_size = 22
+text = "+"
+
+[node name="ChocolateCard" type="Panel" parent="PhonePanel/ProductScroll/ProductList" unique_id=55242835]
+custom_minimum_size = Vector2(384, 105)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_g7b7a")
+
+[node name="ChocolateName" type="Label" parent="PhonePanel/ProductScroll/ProductList/ChocolateCard" unique_id=1196588198]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 12.0
+offset_right = 220.0
+offset_bottom = 47.0
+theme_override_colors/font_color = Color(0.22745098, 0.14117648, 0.08235294, 1)
+theme_override_font_sizes/font_size = 20
+text = "Chocolate Bars"
+
+[node name="ChocolateQuantity" type="Label" parent="PhonePanel/ProductScroll/ProductList/ChocolateCard" unique_id=1857474465]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 47.0
+offset_right = 220.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.41960785, 0.34509805, 0.28235295, 1)
+theme_override_font_sizes/font_size = 15
+text = "Box of 12"
+
+[node name="ChocolatePrice" type="Label" parent="PhonePanel/ProductScroll/ProductList/ChocolateCard" unique_id=760378010]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 72.0
+offset_right = 140.0
+offset_bottom = 97.0
+theme_override_colors/font_color = Color(0.95686275, 0.4862745, 0, 1)
+theme_override_font_sizes/font_size = 18
+text = "£10.00"
+
+[node name="ChocolateMinus" type="Button" parent="PhonePanel/ProductScroll/ProductList/ChocolateCard" unique_id=1010190086]
+layout_mode = 0
+offset_left = 225.0
+offset_top = 32.0
+offset_right = 265.0
+offset_bottom = 72.0
+theme_override_font_sizes/font_size = 22
+text = "-"
+
+[node name="ChocolateAmount" type="Label" parent="PhonePanel/ProductScroll/ProductList/ChocolateCard" unique_id=1614472861]
+layout_mode = 0
+offset_left = 270.0
+offset_top = 35.0
+offset_right = 315.0
+offset_bottom = 70.0
+theme_override_colors/font_color = Color(0.22745098, 0.14117648, 0.08235294, 1)
+theme_override_font_sizes/font_size = 22
+text = "0"
+
+[node name="ChocolatePlus" type="Button" parent="PhonePanel/ProductScroll/ProductList/ChocolateCard" unique_id=361084329]
+layout_mode = 0
+offset_left = 325.0
+offset_top = 32.0
+offset_right = 365.0
+offset_bottom = 72.0
+theme_override_font_sizes/font_size = 22
+text = "+"
+
+[connection signal="pressed" from="PhonePanel/ProductScroll/ProductList/ColaCard/ColaMinus" to="." method="_on_cola_minus_pressed"]
+[connection signal="pressed" from="PhonePanel/ProductScroll/ProductList/ColaCard/ColaPlus" to="." method="_on_cola_plus_pressed"]
+[connection signal="pressed" from="PhonePanel/ProductScroll/ProductList/ChocolateCard/ChocolateMinus" to="." method="_on_chocolate_minus_pressed"]
+[connection signal="pressed" from="PhonePanel/ProductScroll/ProductList/ChocolateCard/ChocolatePlus" to="." method="_on_chocolate_plus_pressed"]

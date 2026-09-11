@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Product" format=3 uid="uid://caejht5rvvwnp"]
+
+[ext_resource type="Script" uid="uid://dj2vhe62q74km" path="res://Store3D/StoreProducts/Product.gd" id="1_2tuvw"]
+
+[resource]
+script = ExtResource("1_2tuvw")
+product_name = "Cola"
+category = "Drinks"
+wholesale_cost = 10.0
+rrp = 0.8
+metadata/_custom_type_script = "uid://dj2vhe62q74km"

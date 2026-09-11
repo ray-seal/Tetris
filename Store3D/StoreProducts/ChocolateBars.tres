@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Product" format=3 uid="uid://csrmo0re264an"]
+
+[ext_resource type="Script" uid="uid://dj2vhe62q74km" path="res://Store3D/StoreProducts/Product.gd" id="1_og7gp"]
+
+[resource]
+script = ExtResource("1_og7gp")
+product_name = "Chocolate Bars"
+category = "Confectionary"
+wholesale_cost = 10.0
+rrp = 1.0
+metadata/_custom_type_script = "uid://dj2vhe62q74km"
