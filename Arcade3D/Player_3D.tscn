@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://b8ase2e3acpyg"]
+
+[ext_resource type="Script" uid="uid://ss1w5853dspi" path="res://Arcade3D/Player3D.gd" id="1_uj7jo"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dl8kl"]
+
+[node name="Player3D" type="CharacterBody3D" unique_id=542034247]
+script = ExtResource("1_uj7jo")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1013765355]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
+current = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1386696510]
+shape = SubResource("CapsuleShape3D_dl8kl")

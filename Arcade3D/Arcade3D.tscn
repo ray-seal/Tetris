@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://cw4h5gmkru7w3" path="res://Arcade3D/Carpet.png" id="1_16cfo"]
 [ext_resource type="Script" uid="uid://dnh0tb0hxdy5v" path="res://Arcade3D/Arcade3D.gd" id="1_84x75"]
-[ext_resource type="Script" uid="uid://ss1w5853dspi" path="res://Arcade3D/Player3D.gd" id="2_hk705"]
+[ext_resource type="PackedScene" uid="uid://b8ase2e3acpyg" path="res://Arcade3D/Player_3D.tscn" id="2_br414"]
 [ext_resource type="Texture2D" uid="uid://dxydfoi72qehs" path="res://Arcade3D/CabinetSkins/BlockDrop/BlockDropMarquee.png" id="5_nsuf8"]
 [ext_resource type="Texture2D" uid="uid://bicflso5p4n71" path="res://Arcade3D/CabinetSkins/BlockDrop/BlockDropScreen.png" id="6_1wlxx"]
 [ext_resource type="PackedScene" uid="uid://cx1bhecign8a7" path="res://Arcade3D/ArcadeMachineV1.fbx" id="6_nsuf8"]
@@ -11,8 +11,9 @@
 [ext_resource type="Material" uid="uid://by0reuid2pbbr" path="res://Arcade3D/CabinetSkins/BlockDrop_Accents_Dusty.tres" id="9_337ol"]
 [ext_resource type="Texture2D" uid="uid://dki6yd8hf4af3" path="res://Arcade3D/CabinetSkins/DeliveryBoy/DeliveryBoyMarquee.png" id="10_6vqkx"]
 [ext_resource type="Texture2D" uid="uid://cc6hf1eww7fp5" path="res://Arcade3D/CabinetSkins/DeliveryBoy/DeliveryBoyScreen.png" id="11_gnye7"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dl8kl"]
+[ext_resource type="PackedScene" uid="uid://cga72r8nuar1r" path="res://Arcade3D/ArcadeMachineV2.fbx" id="12_br414"]
+[ext_resource type="Texture2D" uid="uid://ppq57oltj43m" path="res://Arcade3D/CabinetSkins/Worm/WormMarquee.png" id="13_muwnm"]
+[ext_resource type="Texture2D" uid="uid://ttquey4dd1pv" path="res://Arcade3D/CabinetSkins/Worm/WormScreen.png" id="14_8pupm"]
 
 [sub_resource type="PlaneMesh" id="PlaneMesh_dl8kl"]
 size = Vector2(20, 20)
@@ -35,34 +36,58 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("InsertCoin:modulate")
+tracks/0/path = NodePath("../ArcadeMachineV1/ScreenLogo:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 0, 1)]
+"values": [Color(1, 1, 1, 0.39607844)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("ScreenLogo:modulate")
+tracks/1/path = NodePath("InsertCoin:modulate")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0.39607844)]
+"values": [Color(1, 1, 0, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../ArcadeMachineV1/ScreenLogo:modulate")
+tracks/2/path = NodePath("ScreenLogo:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.39607844)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../ArcadeMachineV3/InsertCoin:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 0, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../ArcadeMachineV3/ScreenLogo:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -79,7 +104,7 @@ tracks/0/path = NodePath("InsertCoin:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.001, 0.5, 1),
+"times": PackedFloat32Array(0, 0.5, 1),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Color(1, 1, 0, 1), Color(1, 1, 0, 0), Color(1, 1, 0, 1)]
@@ -91,14 +116,14 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("ScreenLogo:modulate")
+tracks/0/path = NodePath("../ArcadeMachineV1/ScreenLogo:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.35, 0.5),
+"times": PackedFloat32Array(0, 0.4, 0.7, 1),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0.39607844), Color(1, 1, 1, 0.3137255), Color(1, 1, 1, 0.45882353), Color(1, 1, 1, 0.39607844)]
+"values": [Color(1, 1, 1, 0.39607844), Color(1, 1, 1, 0.52156866), Color(1, 1, 1, 0.39607844), Color(1, 1, 1, 0.39607844)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -115,14 +140,38 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("../ArcadeMachineV1/ScreenLogo:modulate")
+tracks/2/path = NodePath("ScreenLogo:modulate")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.4, 0.5, 0.7, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0.2, 0.5, 0.79999995, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0.39607844), Color(1, 1, 1, 0.52156866), Color(1, 1, 1, 0.20784314), Color(1, 1, 1, 0.39607844), Color(1, 1, 1, 0.39607844)]
+"values": [Color(1, 1, 1, 0.20784314), Color(1, 1, 1, 0.52156866), Color(1, 1, 1, 0.39607844), Color(1, 1, 1, 0.39607844)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../ArcadeMachineV3/InsertCoin:modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 0, 1), Color(1, 1, 0, 0), Color(1, 1, 0, 1)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../ArcadeMachineV3/ScreenLogo:modulate")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.75, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.39607844), Color(1, 1, 1, 0.20784314), Color(1, 1, 1, 0.52156866), Color(1, 1, 1, 0.39607844)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n3gx8"]
@@ -191,16 +240,8 @@ shadow_mesh = SubResource("ArrayMesh_l7bmu")
 [node name="Arcade3D" type="Node3D" unique_id=2013108557]
 script = ExtResource("1_84x75")
 
-[node name="Player3D" type="CharacterBody3D" parent="." unique_id=2032863775]
+[node name="Player3D" parent="." unique_id=542034247 instance=ExtResource("2_br414")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.0819645, 0)
-script = ExtResource("2_hk705")
-
-[node name="Camera3D" type="Camera3D" parent="Player3D" unique_id=1025660705]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.6, 0)
-current = true
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Player3D" unique_id=271033974]
-shape = SubResource("CapsuleShape3D_dl8kl")
 
 [node name="Floor" type="MeshInstance3D" parent="." unique_id=158165919]
 mesh = SubResource("PlaneMesh_dl8kl")
@@ -291,9 +332,51 @@ autoplay = &"screen_dimming"
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1569076737]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0)
 
+[node name="ArcadeMachineV2" parent="." unique_id=1168286822 instance=ExtResource("12_br414")]
+transform = Transform3D(2.476632, 0, 0, 0, 2.476632, 0, 0, 0, 2.476632, -0.7590935, 0.049999952, -5.609279)
+
+[node name="ArcadeMachineV1" type="MeshInstance3D" parent="ArcadeMachineV2" unique_id=1938088153]
+mesh = SubResource("ArrayMesh_eat2t")
+
+[node name="MarqueeLogo" type="Sprite3D" parent="ArcadeMachineV2" unique_id=1135579809]
+transform = Transform3D(0.019, 0, -3.330669e-16, 0, 0.012999999, 0, 2.220446e-16, 0, 0.025, 0.32832462, 1.4884862, 0.6553645)
+modulate = Color(1, 1, 0, 0.29411766)
+texture = ExtResource("13_muwnm")
+
+[node name="InteractionArea" type="Area3D" parent="ArcadeMachineV2" unique_id=1600794647]
+transform = Transform3D(-0.2777778, 0, -4.1943274e-08, 0, 0.2777778, 0, 4.1943274e-08, 0, -0.2777778, -0.6063721, 0.5090413, 2.4547136)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ArcadeMachineV2/InteractionArea" unique_id=101404799]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.3629112, 0.75, 6.7252483)
+shape = SubResource("BoxShape3D_6wp04")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="ArcadeMachineV2" unique_id=929650083]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ArcadeMachineV2/StaticBody3D" unique_id=1117278340]
+transform = Transform3D(1, 0, 7.1054274e-15, 0, 1, 0, -7.1054274e-15, 0, 1, 0.33072278, 0.7879881, 0.3279209)
+shape = SubResource("BoxShape3D_rvie0")
+
+[node name="ScreenLogo" type="Sprite3D" parent="ArcadeMachineV2" unique_id=1116689730]
+transform = Transform3D(0.03, 0, -2.646978e-23, 0, 0.028531695, -0.00927051, 2.646978e-23, 0.00927051, 0.028531695, 0.3337891, 1.1920838, 0.5233935)
+modulate = Color(1, 1, 1, 0.39607844)
+texture = ExtResource("14_8pupm")
+
+[node name="InsertCoin" type="Label3D" parent="ArcadeMachineV2" unique_id=1411948541]
+transform = Transform3D(1, 1.776357e-15, -7.1054274e-15, 0, 0.9563047, -0.29237172, -7.1054274e-15, 0.29237172, 0.9563047, 0.32629406, 1.0202981, 0.50605845)
+modulate = Color(1, 1, 0, 1)
+outline_modulate = Color(0, 0, 0, 0)
+text = "INSERT COIN	"
+font_size = 7
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ArcadeMachineV2" unique_id=874178341]
+libraries/ = SubResource("AnimationLibrary_n3gx8")
+autoplay = &"screen_dimming"
+
 [connection signal="body_entered" from="ArcadeMachineV1/InteractionArea" to="." method="_on_blockdrop_area_body_entered"]
 [connection signal="body_exited" from="ArcadeMachineV1/InteractionArea" to="." method="_on_blockdrop_area_body_exited"]
 [connection signal="body_entered" from="ArcadeMachineV3/InteractionArea" to="." method="_on_deliveryboy_area_body_entered"]
 [connection signal="body_exited" from="ArcadeMachineV3/InteractionArea" to="." method="_on_deliveryboy_area_body_exited"]
+[connection signal="body_entered" from="ArcadeMachineV2/InteractionArea" to="." method="_on_worm_area_body_entered"]
+[connection signal="body_exited" from="ArcadeMachineV2/InteractionArea" to="." method="_on_worm_area_body_exited"]
 
 [editable path="ArcadeMachineV1"]

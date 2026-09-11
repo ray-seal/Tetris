@@ -2,6 +2,7 @@ extends Node3D
 
 var player_near_blockdrop := false
 var player_near_deliveryboy := false
+var player_near_worm := false
 
 func _on_blockdrop_area_body_entered(body: Node3D) -> void:
 	if body.name == "Player3D":
@@ -30,3 +31,15 @@ func _input(event):
 			if event.keycode == KEY_SPACE or event.keycode == KEY_Q:
 				get_tree().change_scene_to_file("res://DeliveryBoy/DeliveryBoy.tscn")
 				
+		if player_near_worm:
+			if event.keycode == KEY_SPACE or event.keycode == KEY_Q:
+				get_tree().change_scene_to_file("res://Worm/Sewers.tscn")
+
+
+func _on_worm_area_body_entered(body: Node3D) -> void:
+	if body.name == "Player3D":
+		player_near_worm = true
+
+func _on_worm_area_body_exited(body: Node3D) -> void:
+	if body.name == "Player3D":
+		player_near_worm = false

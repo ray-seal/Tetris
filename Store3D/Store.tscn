@@ -1,0 +1,36 @@
+[gd_scene format=3 uid="uid://dsw62avpeqp18"]
+
+[ext_resource type="PackedScene" uid="uid://b8ase2e3acpyg" path="res://Arcade3D/Player_3D.tscn" id="1_6dpgf"]
+
+[node name="Store" type="Node3D" unique_id=1653521937]
+
+[node name="Wall_Front" type="CSGBox3D" parent="." unique_id=1173218583]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 5)
+use_collision = true
+size = Vector3(12, 3, 0.2)
+
+[node name="Floor" type="CSGBox3D" parent="." unique_id=1225039158]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.1, 0)
+use_collision = true
+size = Vector3(12, 0.2, 10)
+
+[node name="Wall_Back" type="CSGBox3D" parent="." unique_id=1145308320]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, -5)
+use_collision = true
+size = Vector3(12, 3, 0.2)
+
+[node name="Wall_Left" type="CSGBox3D" parent="." unique_id=844815109]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 1.5, 0)
+use_collision = true
+size = Vector3(0.2, 3, 10)
+
+[node name="Wall_Right" type="CSGBox3D" parent="." unique_id=1886977154]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 1.5, 0)
+use_collision = true
+size = Vector3(0.2, 3, 10)
+
+[node name="Player3D" parent="." unique_id=542034247 instance=ExtResource("1_6dpgf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2055036009]
+transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0)
