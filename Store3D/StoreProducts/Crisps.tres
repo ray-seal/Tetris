@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="Product" format=3 uid="uid://ds20f5o2darn8"]
+
+[ext_resource type="Script" uid="uid://dj2vhe62q74km" path="res://Store3D/StoreProducts/Product.gd" id="1_oqufu"]
+
+[resource]
+script = ExtResource("1_oqufu")
+product_name = "Crisps"
+category = "Snacks"
+wholesale_cost = 10.0
+rrp = 1.0
+metadata/_custom_type_script = "uid://dj2vhe62q74km"

@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://y06yu44jlhf" path="res://Store3D/ShopPhone.gd" id="1_nbluc"]
 [ext_resource type="Resource" uid="uid://csrmo0re264an" path="res://Store3D/StoreProducts/ChocolateBars.tres" id="2_gfulx"]
 [ext_resource type="Resource" uid="uid://caejht5rvvwnp" path="res://Store3D/StoreProducts/Cola.tres" id="3_g47ck"]
+[ext_resource type="Resource" uid="uid://ds20f5o2darn8" path="res://Store3D/StoreProducts/Crisps.tres" id="4_w5p8u"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7lei4"]
 bg_color = Color(1, 0.96862745, 0.9254902, 1)
@@ -12,6 +13,13 @@ border_width_right = 6
 border_width_bottom = 6
 border_color = Color(0.95686275, 0.4862745, 0, 1)
 corner_detail = 20
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w5p8u"]
+bg_color = Color(0.95686275, 0.4862745, 0, 1)
+corner_radius_top_left = 8
+corner_radius_top_right = 8
+corner_radius_bottom_right = 8
+corner_radius_bottom_left = 8
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g7b7a"]
 bg_color = Color(1, 0.99215686, 0.972549, 1)
@@ -27,6 +35,7 @@ process_mode = 3
 script = ExtResource("1_nbluc")
 chocolate_product = ExtResource("2_gfulx")
 cola_product = ExtResource("3_g47ck")
+crisps_product = ExtResource("4_w5p8u")
 
 [node name="PhonePanel" type="Panel" parent="." unique_id=372286524]
 offset_right = 424.0
@@ -85,6 +94,7 @@ offset_right = 399.0
 offset_bottom = 560.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_font_sizes/font_size = 22
+theme_override_styles/normal = SubResource("StyleBoxFlat_w5p8u")
 text = "PLACE ORDER"
 
 [node name="ProductScroll" type="ScrollContainer" parent="PhonePanel" unique_id=876209616]
@@ -97,9 +107,11 @@ offset_bottom = 485.0
 [node name="ProductList" type="VBoxContainer" parent="PhonePanel/ProductScroll" unique_id=1157484306]
 custom_minimum_size = Vector2(0, 374)
 layout_mode = 2
+size_flags_vertical = 3
 theme_override_constants/separation = 10
 
 [node name="ColaCard" type="Panel" parent="PhonePanel/ProductScroll/ProductList" unique_id=2106932771]
+custom_minimum_size = Vector2(384, 105)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_g7b7a")
 
@@ -153,6 +165,69 @@ theme_override_font_sizes/font_size = 22
 text = "0"
 
 [node name="ColaPlus" type="Button" parent="PhonePanel/ProductScroll/ProductList/ColaCard" unique_id=681625212]
+layout_mode = 0
+offset_left = 325.0
+offset_top = 32.0
+offset_right = 365.0
+offset_bottom = 72.0
+theme_override_font_sizes/font_size = 22
+text = "+"
+
+[node name="CrispsCard" type="Panel" parent="PhonePanel/ProductScroll/ProductList" unique_id=819710788]
+custom_minimum_size = Vector2(384, 105)
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_g7b7a")
+
+[node name="CrispsName" type="Label" parent="PhonePanel/ProductScroll/ProductList/CrispsCard" unique_id=691029317]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 12.0
+offset_right = 220.0
+offset_bottom = 47.0
+theme_override_colors/font_color = Color(0.22745098, 0.14117648, 0.08235294, 1)
+theme_override_font_sizes/font_size = 20
+text = "Crisps"
+
+[node name="CrispsQuantity" type="Label" parent="PhonePanel/ProductScroll/ProductList/CrispsCard" unique_id=229575914]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 47.0
+offset_right = 220.0
+offset_bottom = 72.0
+theme_override_colors/font_color = Color(0.41960785, 0.34509805, 0.28235295, 1)
+theme_override_font_sizes/font_size = 15
+text = "Box of 12"
+
+[node name="CrispsPrice" type="Label" parent="PhonePanel/ProductScroll/ProductList/CrispsCard" unique_id=1697897512]
+layout_mode = 0
+offset_left = 20.0
+offset_top = 72.0
+offset_right = 140.0
+offset_bottom = 97.0
+theme_override_colors/font_color = Color(0.95686275, 0.4862745, 0, 1)
+theme_override_font_sizes/font_size = 18
+text = "£10.00"
+
+[node name="CrispsMinus" type="Button" parent="PhonePanel/ProductScroll/ProductList/CrispsCard" unique_id=2126407381]
+layout_mode = 0
+offset_left = 225.0
+offset_top = 32.0
+offset_right = 265.0
+offset_bottom = 72.0
+theme_override_font_sizes/font_size = 22
+text = "-"
+
+[node name="CrispsAmount" type="Label" parent="PhonePanel/ProductScroll/ProductList/CrispsCard" unique_id=1528816207]
+layout_mode = 0
+offset_left = 270.0
+offset_top = 35.0
+offset_right = 315.0
+offset_bottom = 70.0
+theme_override_colors/font_color = Color(0.22745098, 0.14117648, 0.08235294, 1)
+theme_override_font_sizes/font_size = 22
+text = "0"
+
+[node name="CrispsPlus" type="Button" parent="PhonePanel/ProductScroll/ProductList/CrispsCard" unique_id=245504676]
 layout_mode = 0
 offset_left = 325.0
 offset_top = 32.0
@@ -224,7 +299,10 @@ offset_bottom = 72.0
 theme_override_font_sizes/font_size = 22
 text = "+"
 
+[connection signal="pressed" from="PhonePanel/PlaceOrderButton" to="." method="_on_place_order_button_pressed"]
 [connection signal="pressed" from="PhonePanel/ProductScroll/ProductList/ColaCard/ColaMinus" to="." method="_on_cola_minus_pressed"]
 [connection signal="pressed" from="PhonePanel/ProductScroll/ProductList/ColaCard/ColaPlus" to="." method="_on_cola_plus_pressed"]
+[connection signal="pressed" from="PhonePanel/ProductScroll/ProductList/CrispsCard/CrispsMinus" to="." method="_on_crisps_minus_pressed"]
+[connection signal="pressed" from="PhonePanel/ProductScroll/ProductList/CrispsCard/CrispsPlus" to="." method="_on_crisps_plus_pressed"]
 [connection signal="pressed" from="PhonePanel/ProductScroll/ProductList/ChocolateCard/ChocolateMinus" to="." method="_on_chocolate_minus_pressed"]
 [connection signal="pressed" from="PhonePanel/ProductScroll/ProductList/ChocolateCard/ChocolatePlus" to="." method="_on_chocolate_plus_pressed"]
