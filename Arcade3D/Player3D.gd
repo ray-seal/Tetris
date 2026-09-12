@@ -25,7 +25,7 @@ func _physics_process(delta: float) -> void:
 		velocity += get_gravity() * delta
 	
 	if Input.is_action_just_pressed("interact") and nearby_delivery:
-		nearby_delivery.queue_free()
+		nearby_delivery.visible = false
 		nearby_delivery = null
 		
 	if can_move:
@@ -44,10 +44,20 @@ func _physics_process(delta: float) -> void:
 
 func _on_interaction_area_body_entered(body: Node3D) -> void:
 	if body == self:
-		var delivery = get_tree().get_first_node_in_group("delivery")
-		if delivery:
-			nearby_delivery = delivery
-			print("Player is near delivery box")
+		var deliveries = get_tree().get_nodes_in_group("delivery")
+		if deliveries.size > 0:
+			var closest_delivery = deliveries[0]
+			var closest_distance = global_position.distance_to(closest_delivery.global_position)
+			
+			for delivery in deliveries:
+				var distance = global_position.distance_to(delivery.global_position)
+				
+				if distance < closest_distance:
+					closest_delivery = delivery
+					closest_distance = distance
+					
+				nearby_delivery = closest_delivery
+				print("Player is near delivery box")
 	
 func _on_interaction_area_body_exited(body: Node3D) -> void:
 	if body == self:

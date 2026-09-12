@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+@onready var inventory = get_tree().get_first_node_in_group("player").get_node("../Inventory")
+
 @export var chocolate_product: Product
 @export var cola_product: Product
 @export var crisps_product: Product
@@ -80,10 +82,33 @@ func _on_place_order_button_pressed() -> void:
 	var cola_amount = int($PhonePanel/ProductScroll/ProductList/ColaCard/ColaAmount.text)
 	var crisps_amount = int($PhonePanel/ProductScroll/ProductList/CrispsCard/CrispsAmount.text)
 	
-	print("ORDER PLACED")
-	print("Chocolate Bars: ", chocolate_amount)
-	print("Cola: ", cola_amount)
-	print("Crisps", crisps_amount)
+	inventory.add_product(chocolate_product, chocolate_amount)
+	inventory.add_product(cola_product, cola_amount)
+	inventory.add_product(crisps_product, crisps_amount)
+
+	var delivery = get_tree().get_first_node_in_group("delivery")
+	
+	if delivery:
+		if chocolate_amount > 0:
+			delivery.product = chocolate_product
+			delivery.quantity = chocolate_amount
+			delivery.update_product_display()
+			delivery.visible = true
+			
+		elif cola_amount > 0:
+			var cola_box = delivery.duplicate()
+			delivery.get_parent().add_child(cola_box)
+			
+			cola_box.product = cola_product
+			cola_box.quantity = cola_amount
+			cola_box.global_position = delivery.global_position + Vector3(0.6, 0, 0)
+			cola_box.update_product_display()
+			cola_box.visible = true
+			
+	print("Inventory Check")
+	print("Chocolate: ", inventory.get_quantity(chocolate_product))
+	print("Cola: ", inventory.get_quantity(cola_product))
+	print("Crisps: ", inventory.get_quantity(crisps_product))
 	
 	# Reset quantities
 	$PhonePanel/ProductScroll/ProductList/ChocolateCard/ChocolateAmount.text = "0"

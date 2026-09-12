@@ -3,6 +3,10 @@
 [ext_resource type="PackedScene" uid="uid://b8ase2e3acpyg" path="res://Arcade3D/Player_3D.tscn" id="1_6dpgf"]
 [ext_resource type="Texture2D" uid="uid://38yw0q16jd8h" path="res://Store3D/StoreAssets/StoreRoomFloor.png" id="2_mrgao"]
 [ext_resource type="PackedScene" uid="uid://c7u7vkcxwqgbb" path="res://Store3D/ShopPhone.tscn" id="3_61yne"]
+[ext_resource type="Script" uid="uid://ccal6yhjcy0rh" path="res://Store3D/DeliveryBox.gd" id="3_bqhyj"]
+[ext_resource type="Script" uid="uid://dj2vhe62q74km" path="res://Store3D/StoreProducts/Product.gd" id="4_2u60d"]
+[ext_resource type="Texture2D" uid="uid://b61o6vdray2wg" path="res://Store3D/StoreProducts/ChocolateImg.png" id="5_5bd4l"]
+[ext_resource type="Texture2D" uid="uid://xfjypkg3dwo2" path="res://Store3D/StoreProducts/ColaImg.png" id="6_2u60d"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_61yne"]
 albedo_texture = ExtResource("2_mrgao")
@@ -31,6 +35,14 @@ albedo_color = Color(0.42352942, 0.22352941, 0.011764706, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mqrfb"]
 albedo_color = Color(0.2901961, 0.14901961, 0.007843138, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tsfcf"]
+albedo_color = Color(0.85037315, 0.38252276, 1.347661e-06, 1)
+albedo_texture_msdf = true
+
+[sub_resource type="Resource" id="Resource_2u60d"]
+script = ExtResource("4_2u60d")
+metadata/_custom_type_script = "uid://dj2vhe62q74km"
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_g7b7a"]
 size = Vector3(1.5, 1.5, 1.5)
@@ -77,6 +89,9 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=2055036009]
 transform = Transform3D(1, 0, 0, 0, 0.70710677, 0.70710677, 0, -0.70710677, 0.70710677, 0, 0, 0)
+
+[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="." unique_id=180210933]
+transform = Transform3D(-0.011931299, -0.7070565, 0.7070565, 0, 0.7071068, 0.7071068, -0.99992883, 0.008436703, -0.008436703, 0, 1.4665527, -6.508894)
 
 [node name="StockRoomFloor" type="CSGBox3D" parent="." unique_id=1840769292]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.5468769, -0.1, -6.488839)
@@ -149,13 +164,33 @@ material = SubResource("StandardMaterial3D_mqrfb")
 
 [node name="DeliveryBox" type="CSGBox3D" parent="." unique_id=1119634745 groups=["delivery"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0.65, -6.5)
+visible = false
 use_collision = true
+material = SubResource("StandardMaterial3D_tsfcf")
+script = ExtResource("3_bqhyj")
+product = SubResource("Resource_2u60d")
 
 [node name="InteractionArea" type="Area3D" parent="DeliveryBox" unique_id=1037198724]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="DeliveryBox/InteractionArea" unique_id=1422200164]
 shape = SubResource("BoxShape3D_g7b7a")
+
+[node name="ChocolateLabel" type="Label3D" parent="DeliveryBox" unique_id=869152713]
+transform = Transform3D(-2.6226834e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, -2.6226834e-08, 0.51, 0.35, 0)
+text = "CHOCOLATE BARS"
+
+[node name="ColaLabel" type="Label3D" parent="DeliveryBox" unique_id=1806115571]
+transform = Transform3D(-2.6226834e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, -2.6226834e-08, 0.51, 0.35, 0)
+text = "COLA"
+
+[node name="ChocolateImage" type="Sprite3D" parent="DeliveryBox" unique_id=1103651999]
+transform = Transform3D(-2.1855695e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -2.1855695e-09, 0.51, -0.04576415, 0)
+texture = ExtResource("5_5bd4l")
+
+[node name="ColaImage" type="Sprite3D" parent="DeliveryBox" unique_id=599087260]
+transform = Transform3D(-2.1855695e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -2.1855695e-09, 0.51, -0.04576415, 0)
+texture = ExtResource("6_2u60d")
 
 [node name="ShopPhone" parent="." unique_id=222336072 instance=ExtResource("3_61yne")]
 

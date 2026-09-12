@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://b8ase2e3acpyg"]
 
 [ext_resource type="Script" uid="uid://ss1w5853dspi" path="res://Arcade3D/Player3D.gd" id="1_uj7jo"]
+[ext_resource type="Script" uid="uid://bdorkx7n0haka" path="res://Arcade3D/Inventory.gd" id="2_f0unb"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_dl8kl"]
 
@@ -13,3 +14,6 @@ current = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1386696510]
 shape = SubResource("CapsuleShape3D_dl8kl")
+
+[node name="Inventory" type="Node" parent="." unique_id=357472150 groups=["player"]]
+script = ExtResource("2_f0unb")
