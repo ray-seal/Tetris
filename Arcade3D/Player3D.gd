@@ -8,6 +8,7 @@ const SPEED = 5.0
 var camera_pitch := 0.0
 var can_move := true
 var nearby_delivery: Node3D = null
+var controls_locked = false
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_CAPTURED
@@ -20,6 +21,11 @@ func _unhandled_input(event):
 		camera_pitch = clamp(camera_pitch, 1.5, 1.5)
 
 func _physics_process(delta: float) -> void:
+	if controls_locked:
+		velocity = Vector3.ZERO
+		move_and_slide()
+		return
+		
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
@@ -45,7 +51,7 @@ func _physics_process(delta: float) -> void:
 func _on_interaction_area_body_entered(body: Node3D) -> void:
 	if body == self:
 		var deliveries = get_tree().get_nodes_in_group("delivery")
-		if deliveries.size > 0:
+		if deliveries.size() > 0:
 			var closest_delivery = deliveries[0]
 			var closest_distance = global_position.distance_to(closest_delivery.global_position)
 			

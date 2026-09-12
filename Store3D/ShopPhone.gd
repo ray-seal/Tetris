@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var inventory = get_tree().get_first_node_in_group("player").get_node("../Inventory")
+@onready var inventory = get_tree().root.find_child("Inventory", true, false)
 
 @export var chocolate_product: Product
 @export var cola_product: Product
@@ -56,6 +56,13 @@ func _ready() -> void:
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and event.keycode == KEY_P:
 		visible = not visible
+		
+		var player = get_tree().get_first_node_in_group("player")
+		if player:
+			player.controls_locked = visible
+		
+		if visible:
+			$PhonePanel/ProductScroll/ProductList/ColaCard/ColaMinus.grab_focus()
 
 		if visible:
 			$PhonePanel/PlaceOrderButton.text = "PLACE ORDER"
@@ -120,3 +127,15 @@ func _on_place_order_button_pressed() -> void:
 	
 	$PhonePanel/PlaceOrderButton.text = "ORDER PLACED"
 	$PhonePanel/PlaceOrderButton.disabled = true
+	
+func _process(delta):
+	if visible:
+		$PhonePanel/ProductScroll/ProductList/ColaCard/ColaMinus.focus_mode = Control.FOCUS_ALL
+		$PhonePanel/ProductScroll/ProductList/ColaCard/ColaPlus.focus_mode = Control.FOCUS_ALL
+		$PhonePanel/ProductScroll/ProductList/CrispsCard/CrispsMinus.focus_mode = Control.FOCUS_ALL
+		$PhonePanel/ProductScroll/ProductList/CrispsCard/CrispsPlus.focus_mode = Control.FOCUS_ALL
+		$PhonePanel/ProductScroll/ProductList/ChocolateCard/ChocolateMinus.focus_mode = Control.FOCUS_ALL
+		$PhonePanel/ProductScroll/ProductList/ChocolateCard/ChocolatePlus.focus_mode = Control.FOCUS_ALL
+		$PhonePanel/PlaceOrderButton.focus_mode = Control.FOCUS_ALL
+			
+	

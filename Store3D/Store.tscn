@@ -36,6 +36,11 @@ albedo_color = Color(0.42352942, 0.22352941, 0.011764706, 1)
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mqrfb"]
 albedo_color = Color(0.2901961, 0.14901961, 0.007843138, 1)
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_6wp04"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dl8kl"]
+size = Vector3(1.5, 1.5, 1.5)
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tsfcf"]
 albedo_color = Color(0.85037315, 0.38252276, 1.347661e-06, 1)
 albedo_texture_msdf = true
@@ -162,7 +167,14 @@ use_collision = true
 size = Vector3(0.5, 0.08, 1.8)
 material = SubResource("StandardMaterial3D_mqrfb")
 
-[node name="DeliveryBox" type="CSGBox3D" parent="." unique_id=1119634745 groups=["delivery"]]
+[node name="RigidBody3D" type="RigidBody3D" parent="." unique_id=477054339]
+physics_material_override = SubResource("PhysicsMaterial_6wp04")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D" unique_id=2013287078]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0.65, -6.5)
+shape = SubResource("BoxShape3D_dl8kl")
+
+[node name="DeliveryBox" type="CSGBox3D" parent="RigidBody3D" unique_id=1119634745 groups=["delivery"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0.65, -6.5)
 visible = false
 use_collision = true
@@ -170,29 +182,29 @@ material = SubResource("StandardMaterial3D_tsfcf")
 script = ExtResource("3_bqhyj")
 product = SubResource("Resource_2u60d")
 
-[node name="InteractionArea" type="Area3D" parent="DeliveryBox" unique_id=1037198724]
+[node name="InteractionArea" type="Area3D" parent="RigidBody3D/DeliveryBox" unique_id=1037198724]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="DeliveryBox/InteractionArea" unique_id=1422200164]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D/DeliveryBox/InteractionArea" unique_id=1422200164]
 shape = SubResource("BoxShape3D_g7b7a")
 
-[node name="ChocolateLabel" type="Label3D" parent="DeliveryBox" unique_id=869152713]
+[node name="ChocolateLabel" type="Label3D" parent="RigidBody3D/DeliveryBox" unique_id=869152713]
 transform = Transform3D(-2.6226834e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, -2.6226834e-08, 0.51, 0.35, 0)
 text = "CHOCOLATE BARS"
 
-[node name="ColaLabel" type="Label3D" parent="DeliveryBox" unique_id=1806115571]
+[node name="ColaLabel" type="Label3D" parent="RigidBody3D/DeliveryBox" unique_id=1806115571]
 transform = Transform3D(-2.6226834e-08, 0, 0.6, 0, 0.6, 0, -0.6, 0, -2.6226834e-08, 0.51, 0.35, 0)
 text = "COLA"
 
-[node name="ChocolateImage" type="Sprite3D" parent="DeliveryBox" unique_id=1103651999]
+[node name="ChocolateImage" type="Sprite3D" parent="RigidBody3D/DeliveryBox" unique_id=1103651999]
 transform = Transform3D(-2.1855695e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -2.1855695e-09, 0.51, -0.04576415, 0)
 texture = ExtResource("5_5bd4l")
 
-[node name="ColaImage" type="Sprite3D" parent="DeliveryBox" unique_id=599087260]
+[node name="ColaImage" type="Sprite3D" parent="RigidBody3D/DeliveryBox" unique_id=599087260]
 transform = Transform3D(-2.1855695e-09, 0, 0.05, 0, 0.05, 0, -0.05, 0, -2.1855695e-09, 0.51, -0.04576415, 0)
 texture = ExtResource("6_2u60d")
 
 [node name="ShopPhone" parent="." unique_id=222336072 instance=ExtResource("3_61yne")]
 
-[connection signal="body_entered" from="DeliveryBox/InteractionArea" to="Player3D" method="_on_interaction_area_body_entered"]
-[connection signal="body_exited" from="DeliveryBox/InteractionArea" to="Player3D" method="_on_interaction_area_body_exited"]
+[connection signal="body_entered" from="RigidBody3D/DeliveryBox/InteractionArea" to="Player3D" method="_on_interaction_area_body_entered"]
+[connection signal="body_exited" from="RigidBody3D/DeliveryBox/InteractionArea" to="Player3D" method="_on_interaction_area_body_exited"]

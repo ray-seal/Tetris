@@ -4,16 +4,15 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://38yw0q16jd8h"
 path.s3tc="res://.godot/imported/StoreRoomFloor.png-008baf88c5417efa15f87e5f1d700d77.s3tc.ctex"
-path.etc2="res://.godot/imported/StoreRoomFloor.png-008baf88c5417efa15f87e5f1d700d77.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Store3D/StoreAssets/StoreRoomFloor.png"
-dest_files=["res://.godot/imported/StoreRoomFloor.png-008baf88c5417efa15f87e5f1d700d77.s3tc.ctex", "res://.godot/imported/StoreRoomFloor.png-008baf88c5417efa15f87e5f1d700d77.etc2.ctex"]
+dest_files=["res://.godot/imported/StoreRoomFloor.png-008baf88c5417efa15f87e5f1d700d77.s3tc.ctex"]
 
 [params]
 
