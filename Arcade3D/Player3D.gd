@@ -69,5 +69,17 @@ func _on_interaction_area_body_exited(body: Node3D) -> void:
 	if body == self:
 		nearby_delivery = null
 		
+		var deliveries = get_tree().get_nodes_in_group("deliveries")
+		
+		for delivery in deliveries:
+			if delivery.visible:
+				var distance = global_position.distance_to(delivery.global_position)
+				
+				if distance < 2.0:
+					nearby_delivery = delivery
+					break
+					
+		
+		
 	
 	
