@@ -8,6 +8,7 @@ const SPEED = 5.0
 var camera_pitch := 0.0
 var can_move := true
 var nearby_delivery: Node3D = null
+var held_object: RigidBody3D = null
 var controls_locked = false
 
 func _ready():
@@ -18,9 +19,11 @@ func _unhandled_input(event):
 		rotate_y(-event.relative.x * mouse_sensitivity)
 		
 		camera_pitch -= event.relative.y * mouse_sensitivity
-		camera_pitch = clamp(camera_pitch, 1.5, 1.5)
+		camera_pitch = clamp(camera_pitch, -1.5, 1.5)
 
 func _physics_process(delta: float) -> void:
+	camera.rotation.x = camera_pitch
+	
 	if controls_locked:
 		velocity = Vector3.ZERO
 		move_and_slide()
@@ -29,11 +32,22 @@ func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
-	
-	if Input.is_action_just_pressed("interact") and nearby_delivery:
-		nearby_delivery.visible = false
-		nearby_delivery = null
 		
+	
+	if Input.is_action_just_pressed("interact"):
+		var target = $Camera3D/InteractionRay.get_collider()
+		
+		if target:
+			print("Looking at: ", target.name)
+			
+			if target is RigidBody3D:
+				var box = target.get_node_or_null("DeliveryBox")
+				
+				if box and box.is_in_group("delivery"):
+					print("PICKING UP BOX!")
+					pick_up_object(target)
+					
+					
 	if can_move:
 		# Left / Right Movement
 		var input_dir := Input.get_vector("move_left", "move_right", "move_forward", "move_back")
@@ -46,6 +60,22 @@ func _physics_process(delta: float) -> void:
 		velocity.z = 0
 	
 	move_and_slide()
+	
+func pick_up_object(object: RigidBody3D) -> void:
+	print("INSIDE PICK UP FUNCTION")
+	
+func drop_object() -> void:
+	if held_object == null:
+		return
+		
+	var object = held_object
+	held_object = null
+	
+	object.reparent(get_tree().current_scene, true)
+	object.freeze = false
+	
+	object.global_position = $Camera3D/HoldPoint.global_position
+	
 
 
 func _on_interaction_area_body_entered(body: Node3D) -> void:

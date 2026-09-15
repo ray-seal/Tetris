@@ -53,6 +53,10 @@ func _ready() -> void:
 	$PhonePanel/PlaceOrderButton.text = "PLACE ORDER"
 	$PhonePanel/PlaceOrderButton.disabled = false
 	
+	var delivery = get_tree().get_first_node_in_group("delivery")
+	if delivery:
+		delivery.visible = false
+	
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and event.keycode == KEY_P:
 		visible = not visible
