@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cc6hf1eww7fp5"
 path.s3tc="res://.godot/imported/DeliveryBoyScreen.png-5bc6f18f9d423d382f5eb86273bbcfb4.s3tc.ctex"
+path.etc2="res://.godot/imported/DeliveryBoyScreen.png-5bc6f18f9d423d382f5eb86273bbcfb4.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Arcade3D/CabinetSkins/DeliveryBoy/DeliveryBoyScreen.png"
-dest_files=["res://.godot/imported/DeliveryBoyScreen.png-5bc6f18f9d423d382f5eb86273bbcfb4.s3tc.ctex"]
+dest_files=["res://.godot/imported/DeliveryBoyScreen.png-5bc6f18f9d423d382f5eb86273bbcfb4.s3tc.ctex", "res://.godot/imported/DeliveryBoyScreen.png-5bc6f18f9d423d382f5eb86273bbcfb4.etc2.ctex"]
 
 [params]
 
