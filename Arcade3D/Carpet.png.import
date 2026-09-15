@@ -4,16 +4,15 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://cw4h5gmkru7w3"
 path.s3tc="res://.godot/imported/Carpet.png-0046b67fdbd8fee1ab2392e610a5ad18.s3tc.ctex"
-path.etc2="res://.godot/imported/Carpet.png-0046b67fdbd8fee1ab2392e610a5ad18.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Arcade3D/Carpet.png"
-dest_files=["res://.godot/imported/Carpet.png-0046b67fdbd8fee1ab2392e610a5ad18.s3tc.ctex", "res://.godot/imported/Carpet.png-0046b67fdbd8fee1ab2392e610a5ad18.etc2.ctex"]
+dest_files=["res://.godot/imported/Carpet.png-0046b67fdbd8fee1ab2392e610a5ad18.s3tc.ctex"]
 
 [params]
 

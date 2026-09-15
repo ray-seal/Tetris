@@ -4,16 +4,15 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://qj70eiryekad"
 path.s3tc="res://.godot/imported/PlasticPallet_Normal_DirectX.png-229cadfde578b8c5bd08e238a11d6524.s3tc.ctex"
-path.etc2="res://.godot/imported/PlasticPallet_Normal_DirectX.png-229cadfde578b8c5bd08e238a11d6524.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc", "etc2_astc"],
+"imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Store3D/StoreAssets/textures/PlasticPallet_Normal_DirectX.png"
-dest_files=["res://.godot/imported/PlasticPallet_Normal_DirectX.png-229cadfde578b8c5bd08e238a11d6524.s3tc.ctex", "res://.godot/imported/PlasticPallet_Normal_DirectX.png-229cadfde578b8c5bd08e238a11d6524.etc2.ctex"]
+dest_files=["res://.godot/imported/PlasticPallet_Normal_DirectX.png-229cadfde578b8c5bd08e238a11d6524.s3tc.ctex"]
 
 [params]
 

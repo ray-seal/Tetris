@@ -45,6 +45,10 @@ func _physics_process(delta: float) -> void:
 				
 				if box and box.is_in_group("delivery"):
 					print("PICKING UP BOX!")
+					
+					if held_object != null:
+						drop_object()
+						
 					pick_up_object(target)
 					
 					
@@ -63,6 +67,16 @@ func _physics_process(delta: float) -> void:
 	
 func pick_up_object(object: RigidBody3D) -> void:
 	print("INSIDE PICK UP FUNCTION")
+	
+	if held_object != null:
+		return
+	
+	held_object = object
+	
+	held_object.freeze = true
+	held_object.reparent($Camera3D/HoldPoint)
+	held_object.position = Vector3.ZERO
+	
 	
 func drop_object() -> void:
 	if held_object == null:

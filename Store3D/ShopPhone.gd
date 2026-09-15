@@ -53,9 +53,12 @@ func _ready() -> void:
 	$PhonePanel/PlaceOrderButton.text = "PLACE ORDER"
 	$PhonePanel/PlaceOrderButton.disabled = false
 	
-	var delivery = get_tree().get_first_node_in_group("delivery")
-	if delivery:
+	var delivery_box = get_tree().get_first_node_in_group("delivery")
+	
+	if delivery_box:
+		var delivery = delivery_box.get_parent()
 		delivery.visible = false
+		delivery.get_node("CollisionShape3D").disabled = true
 	
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventKey and event.pressed and event.keycode == KEY_P:
@@ -99,25 +102,32 @@ func _on_place_order_button_pressed() -> void:
 
 	var delivery = get_tree().get_first_node_in_group("delivery")
 	
+	
 	if delivery:
 		if chocolate_amount > 0:
 			var chocolate_box = delivery.duplicate()
 			delivery.get_parent().add_child(chocolate_box)
 			
-			chocolate_box.product = chocolate_product
-			chocolate_box.quantity = chocolate_amount
+			var box = chocolate_box.get_node("DeliveryBox")
+			
+			box.product = chocolate_product
+			box.quantity = chocolate_amount
+			box.update_product_display()
+			
 			chocolate_box.global_position = delivery.global_position
-			chocolate_box.update_product_display
 			chocolate_box.visible = true
 			
 		if cola_amount > 0:
 			var cola_box = delivery.duplicate()
 			delivery.get_parent().add_child(cola_box)
 			
-			cola_box.product = cola_product
-			cola_box.quantity = cola_amount
+			var box = cola_box.get_node("DeliveryBox")
+			
+			box.product = cola_product
+			box.quantity = cola_amount
+			box.update_product_display()
+			
 			cola_box.global_position = delivery.global_position + Vector3(0.6, 0, 0)
-			cola_box.update_product_display()
 			cola_box.visible = true
 			
 	print("Inventory Check")
