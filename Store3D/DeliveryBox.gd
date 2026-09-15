@@ -1,13 +1,13 @@
-extends CSGBox3D
+extends Node3D
 
 @export var product: Product
 @export var quantity: int = 1
 
-@onready var chocolate_label = $ChocolateLabel
-@onready var cola_label = $ColaLabel
+@onready var chocolate_label = $InteractionArea/ChocolateLabel
+@onready var cola_label = $InteractionArea/ColaLabel
 
-@onready var chocolate_image = $ChocolateImage
-@onready var cola_image = $ColaImage
+@onready var chocolate_image = $InteractionArea/ChocolateImage
+@onready var cola_image = $InteractionArea/ColaImage
 
 @onready var interaction_area = $InteractionArea
 

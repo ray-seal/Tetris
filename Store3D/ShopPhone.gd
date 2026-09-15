@@ -97,12 +97,16 @@ func _on_place_order_button_pressed() -> void:
 	
 	if delivery:
 		if chocolate_amount > 0:
-			delivery.product = chocolate_product
-			delivery.quantity = chocolate_amount
-			delivery.update_product_display()
-			delivery.visible = true
+			var chocolate_box = delivery.duplicate()
+			delivery.get_parent().add_child(chocolate_box)
 			
-		elif cola_amount > 0:
+			chocolate_box.product = chocolate_product
+			chocolate_box.quantity = chocolate_amount
+			chocolate_box.global_position = delivery.global_position
+			chocolate_box.update_product_display
+			chocolate_box.visible = true
+			
+		if cola_amount > 0:
 			var cola_box = delivery.duplicate()
 			delivery.get_parent().add_child(cola_box)
 			
