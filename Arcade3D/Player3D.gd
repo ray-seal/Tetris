@@ -40,10 +40,7 @@ func _physics_process(delta: float) -> void:
 		if target:
 			print("Looking at: ", target.name)
 			
-			if target is RigidBody3D:
-				var box = target.get_node_or_null("DeliveryBox")
-				
-				if box and box.is_in_group("delivery"):
+			if target is RigidBody3D and target.is_in_group("delivery"):
 					print("PICKING UP BOX!")
 					
 					if held_object != null:
@@ -74,9 +71,14 @@ func pick_up_object(object: RigidBody3D) -> void:
 	held_object = object
 	
 	held_object.freeze = true
-	held_object.reparent($Camera3D/HoldPoint)
-	held_object.position = Vector3.ZERO
 	
+	held_object.reparent($Camera3D/HoldPoint, true)
+	
+	held_object.global_position = $Camera3D.global_position \
+		+ (-$Camera3D.global_transform.basis.z * -4) \
+		+ Vector3(1.5, -0.5, 0)
+		
+	held_object.global_rotation = $Camera3D.global_rotation
 	
 func drop_object() -> void:
 	if held_object == null:
